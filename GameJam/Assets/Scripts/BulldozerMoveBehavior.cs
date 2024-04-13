@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class BulldozerMoveBehavior : MonoBehaviour
@@ -60,5 +61,20 @@ public class BulldozerMoveBehavior : MonoBehaviour
         
     }
 
-    
+    // when bulldozer hits the player
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+            Invoke("DelPlayer",0.1f);
+        }
+    }
+
+    private void DelPlayer()
+    {
+        
+        GameObject.Find("Player").SetActive(false);
+    }
+
 }
