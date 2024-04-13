@@ -13,7 +13,7 @@ public class BulldozerDirectionChange : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bulldozer = GameObject.Find("Bulldozer");
+        bulldozer = GameObject.Find("bulldozer_updated_0");
         direction = true;
         speedTimer = 0;
     }
@@ -24,7 +24,7 @@ public class BulldozerDirectionChange : MonoBehaviour
         // if bulldozer is just sitting there, check how long its been that way.
         if (Mathf.Abs(bulldozer.GetComponent<Rigidbody2D>().velocity.x) < .2)
         {
-            print(bulldozer.GetComponent<Rigidbody2D>().velocity.x);
+            //print(bulldozer.GetComponent<Rigidbody2D>().velocity.x);
             speedTimer += Time.deltaTime;
             // if its been that way for 2 seconds, flip direction
             if (speedTimer > .75)
