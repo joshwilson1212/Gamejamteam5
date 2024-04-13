@@ -9,6 +9,9 @@ public class Player : MonoBehaviour
     private bool goRight;
     private bool goLeft;
     private bool isGrounded;
+    private int facing;
+
+    public PlatformMonster plat;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +20,7 @@ public class Player : MonoBehaviour
         goRight = false;
         goLeft = false;
         isGrounded = false;
+        facing = 1;
     }
 
     // Update is called once per frame
@@ -32,10 +36,12 @@ public class Player : MonoBehaviour
         }
         if (goLeft && !goRight)
         {
+            facing = -1;
             rb.AddForce(Vector3.left * runForce * Time.deltaTime, ForceMode2D.Force);
         }
         else if (goRight && !goLeft)
         {
+            facing = 1;
             rb.AddForce(Vector3.right * runForce * Time.deltaTime, ForceMode2D.Force);
         }
         else if (isGrounded)
@@ -60,5 +66,15 @@ public class Player : MonoBehaviour
     public void Right(bool act)
     {
         goRight = act;
+    }
+
+    public void SummonPlatform()
+    {
+        // print(plat.isActiveAndEnabled);
+        if (!plat.isActiveAndEnabled)
+        {
+            plat.gameObject.SetActive(true);
+            plat.Summon(transform.position, facing);
+        }
     }
 }

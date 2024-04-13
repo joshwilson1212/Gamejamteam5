@@ -17,6 +17,7 @@ public class PlatformMonster : Charater
     private PlatformState state;
     private bool snapped;
     public GameObject snapArea;
+    public float offsetX = 3;
 
     void Awake()
     {
@@ -44,7 +45,7 @@ public class PlatformMonster : Charater
         {
             // print("Down");
             snapped = false;
-            // snapArea.SetActive(false);
+            snapArea.SetActive(false);
         }
     }
 
@@ -66,5 +67,10 @@ public class PlatformMonster : Charater
             // print("SNAPED");
             snapped = true;
         }
+    }
+
+    public void Summon(Vector3 playerLoc, int facing)
+    {
+        transform.position = playerLoc + new Vector3(offsetX * facing, -0.3f);
     }
 }

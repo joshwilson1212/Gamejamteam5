@@ -40,6 +40,42 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SummonBulldozer",
+                    "type": "Button",
+                    "id": "8331992a-804e-413b-a3e8-899041c48802",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SummonPlatform",
+                    "type": "Button",
+                    "id": "c4658b2a-cbd6-4297-8ef2-c975c4d1badc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SummonMagpie",
+                    "type": "Button",
+                    "id": "d6bb3370-cf4f-423c-b682-d65ae3f35eb1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SummonReaper",
+                    "type": "Button",
+                    "id": "f11bec0b-e3bb-43f3-aaa9-d020824220d7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -84,6 +120,50 @@
                     "processors": "",
                     "groups": "GameInput",
                     "action": "Restart",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0ed1a35e-1a23-488d-b7fe-9f775ce4f259",
+                    "path": "<Keyboard>/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GameInput",
+                    "action": "SummonBulldozer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e9f53c2c-ff9f-48ca-8981-eb6dc90eb4d5",
+                    "path": "<Keyboard>/u",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GameInput",
+                    "action": "SummonPlatform",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "afbd05d1-059a-4a0e-90db-c5aba81af63a",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GameInput",
+                    "action": "SummonMagpie",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "786c481a-2847-42cf-867c-d89393596fad",
+                    "path": "<Keyboard>/o",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GameInput",
+                    "action": "SummonReaper",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -62,6 +62,42 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SummonBulldozer"",
+                    ""type"": ""Button"",
+                    ""id"": ""8331992a-804e-413b-a3e8-899041c48802"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SummonPlatform"",
+                    ""type"": ""Button"",
+                    ""id"": ""c4658b2a-cbd6-4297-8ef2-c975c4d1badc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SummonMagpie"",
+                    ""type"": ""Button"",
+                    ""id"": ""d6bb3370-cf4f-423c-b682-d65ae3f35eb1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SummonReaper"",
+                    ""type"": ""Button"",
+                    ""id"": ""f11bec0b-e3bb-43f3-aaa9-d020824220d7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -108,6 +144,50 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""action"": ""Restart"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0ed1a35e-1a23-488d-b7fe-9f775ce4f259"",
+                    ""path"": ""<Keyboard>/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GameInput"",
+                    ""action"": ""SummonBulldozer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e9f53c2c-ff9f-48ca-8981-eb6dc90eb4d5"",
+                    ""path"": ""<Keyboard>/u"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GameInput"",
+                    ""action"": ""SummonPlatform"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""afbd05d1-059a-4a0e-90db-c5aba81af63a"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GameInput"",
+                    ""action"": ""SummonMagpie"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""786c481a-2847-42cf-867c-d89393596fad"",
+                    ""path"": ""<Keyboard>/o"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GameInput"",
+                    ""action"": ""SummonReaper"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -126,6 +206,10 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         m_Player_Right = m_Player.FindAction("Right", throwIfNotFound: true);
         m_Player_Space = m_Player.FindAction("Space", throwIfNotFound: true);
         m_Player_Restart = m_Player.FindAction("Restart", throwIfNotFound: true);
+        m_Player_SummonBulldozer = m_Player.FindAction("SummonBulldozer", throwIfNotFound: true);
+        m_Player_SummonPlatform = m_Player.FindAction("SummonPlatform", throwIfNotFound: true);
+        m_Player_SummonMagpie = m_Player.FindAction("SummonMagpie", throwIfNotFound: true);
+        m_Player_SummonReaper = m_Player.FindAction("SummonReaper", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -191,6 +275,10 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Right;
     private readonly InputAction m_Player_Space;
     private readonly InputAction m_Player_Restart;
+    private readonly InputAction m_Player_SummonBulldozer;
+    private readonly InputAction m_Player_SummonPlatform;
+    private readonly InputAction m_Player_SummonMagpie;
+    private readonly InputAction m_Player_SummonReaper;
     public struct PlayerActions
     {
         private @GameInput m_Wrapper;
@@ -199,6 +287,10 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         public InputAction @Right => m_Wrapper.m_Player_Right;
         public InputAction @Space => m_Wrapper.m_Player_Space;
         public InputAction @Restart => m_Wrapper.m_Player_Restart;
+        public InputAction @SummonBulldozer => m_Wrapper.m_Player_SummonBulldozer;
+        public InputAction @SummonPlatform => m_Wrapper.m_Player_SummonPlatform;
+        public InputAction @SummonMagpie => m_Wrapper.m_Player_SummonMagpie;
+        public InputAction @SummonReaper => m_Wrapper.m_Player_SummonReaper;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -220,6 +312,18 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @Restart.started += instance.OnRestart;
             @Restart.performed += instance.OnRestart;
             @Restart.canceled += instance.OnRestart;
+            @SummonBulldozer.started += instance.OnSummonBulldozer;
+            @SummonBulldozer.performed += instance.OnSummonBulldozer;
+            @SummonBulldozer.canceled += instance.OnSummonBulldozer;
+            @SummonPlatform.started += instance.OnSummonPlatform;
+            @SummonPlatform.performed += instance.OnSummonPlatform;
+            @SummonPlatform.canceled += instance.OnSummonPlatform;
+            @SummonMagpie.started += instance.OnSummonMagpie;
+            @SummonMagpie.performed += instance.OnSummonMagpie;
+            @SummonMagpie.canceled += instance.OnSummonMagpie;
+            @SummonReaper.started += instance.OnSummonReaper;
+            @SummonReaper.performed += instance.OnSummonReaper;
+            @SummonReaper.canceled += instance.OnSummonReaper;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -236,6 +340,18 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @Restart.started -= instance.OnRestart;
             @Restart.performed -= instance.OnRestart;
             @Restart.canceled -= instance.OnRestart;
+            @SummonBulldozer.started -= instance.OnSummonBulldozer;
+            @SummonBulldozer.performed -= instance.OnSummonBulldozer;
+            @SummonBulldozer.canceled -= instance.OnSummonBulldozer;
+            @SummonPlatform.started -= instance.OnSummonPlatform;
+            @SummonPlatform.performed -= instance.OnSummonPlatform;
+            @SummonPlatform.canceled -= instance.OnSummonPlatform;
+            @SummonMagpie.started -= instance.OnSummonMagpie;
+            @SummonMagpie.performed -= instance.OnSummonMagpie;
+            @SummonMagpie.canceled -= instance.OnSummonMagpie;
+            @SummonReaper.started -= instance.OnSummonReaper;
+            @SummonReaper.performed -= instance.OnSummonReaper;
+            @SummonReaper.canceled -= instance.OnSummonReaper;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -268,5 +384,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         void OnRight(InputAction.CallbackContext context);
         void OnSpace(InputAction.CallbackContext context);
         void OnRestart(InputAction.CallbackContext context);
+        void OnSummonBulldozer(InputAction.CallbackContext context);
+        void OnSummonPlatform(InputAction.CallbackContext context);
+        void OnSummonMagpie(InputAction.CallbackContext context);
+        void OnSummonReaper(InputAction.CallbackContext context);
     }
 }

@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlatformMonsterTigger : MonoBehaviour
+public class PlatformMonsterMagpie : MonoBehaviour
 {
     public PlatformMonster monster;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Monster") && collision.name == "Magpie")
         {
             monster.Rise();
         }
@@ -16,7 +16,7 @@ public class PlatformMonsterTigger : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Monster") && collision.name == "Magpie")
         {
             monster.Lower();
         }
