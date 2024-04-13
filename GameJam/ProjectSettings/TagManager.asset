@@ -8,6 +8,7 @@ TagManager:
   - Monster
   - Moveable
   - Key
+  - Tasty
   layers:
   - Default
   - TransparentFX
