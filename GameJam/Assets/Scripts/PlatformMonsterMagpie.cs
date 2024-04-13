@@ -8,7 +8,7 @@ public class PlatformMonsterMagpie : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Monster") && collision.name == "Magpie")
+        if (collision.CompareTag("Tasty") || collision.name == "Magpie")
         {
             monster.Rise();
         }
@@ -16,7 +16,7 @@ public class PlatformMonsterMagpie : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Monster") && collision.name == "Magpie")
+        if (collision.CompareTag("Tasty") || collision.name == "Magpie")
         {
             monster.Lower();
         }
