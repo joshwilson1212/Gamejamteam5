@@ -9,7 +9,7 @@ public class pickupObject : MonoBehaviour
 
 
     AIDestinationSetter initialtarget;
-
+    public float offsetX = 1;
 
 
     public GameObject grabpoint;
@@ -47,6 +47,8 @@ public class pickupObject : MonoBehaviour
         }
     }
 
-
-
+    public void Summon(Vector3 playerLoc, int facing)
+    {
+        transform.position = playerLoc + new Vector3(offsetX * facing, 0);
+    }
 }

@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
 
     public PlatformMonster plat;
     public Reaper reaper;
+    public pickupObject magpie;
 
     // Start is called before the first frame update
     void Start()
@@ -86,6 +87,16 @@ public class Player : MonoBehaviour
         {
             reaper.gameObject.SetActive(true);
             reaper.Summon(transform.position, facing);
+        }
+    }
+
+    public void SummonMagpie()
+    {
+        // print(plat.isActiveAndEnabled);
+        if (!magpie.isActiveAndEnabled)
+        {
+            magpie.gameObject.SetActive(true);
+            magpie.Summon(transform.position, facing);
         }
     }
 

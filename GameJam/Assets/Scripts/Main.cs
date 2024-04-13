@@ -51,6 +51,10 @@ public class Main : MonoBehaviour
         {
             player.SummonReaper();
         }
+        if (input.Player.SummonMagpie.WasPressedThisFrame())
+        {
+            player.SummonMagpie();
+        }
 
     }
 }
