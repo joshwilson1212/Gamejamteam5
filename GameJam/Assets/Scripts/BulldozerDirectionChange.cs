@@ -28,9 +28,9 @@ public class BulldozerDirectionChange : MonoBehaviour
             //print(bulldozer.GetComponent<Rigidbody2D>().velocity.x);
             speedTimer += Time.deltaTime;
             // if its been that way for .75 seconds, flip direction
-            if (speedTimer > .75)
+            if (speedTimer > .75f)
             {
-                print("Flipping direction because speed too low.");
+                //print("Flipping direction because speed too low.");
                 FlipDirection();
                 speedTimer = 0;
             }
@@ -44,13 +44,13 @@ public class BulldozerDirectionChange : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.CompareTag("Moveable"))
+        if (collision.CompareTag("Moveable") | collision.CompareTag("Player"))
         {
 
         }
         else
         {
-            print("hit wall, flipping");
+            //print("hit wall, flipping");
             FlipDirection();
         }
 
@@ -70,7 +70,7 @@ public class BulldozerDirectionChange : MonoBehaviour
             var y = spriteFacing.y;
             var z = spriteFacing.z;
             bulldozer.transform.localScale = new Vector3(x, y, z);
-            print("Bulldozer Going right");
+            //print("Bulldozer Going right");
 
             direction = false;
         }
@@ -84,7 +84,7 @@ public class BulldozerDirectionChange : MonoBehaviour
             var y = spriteFacing.y;
             var z = spriteFacing.z;
             bulldozer.transform.localScale = new Vector3(-x, y, z);
-            print("Bulldozer Going left");
+            //print("Bulldozer Going left");
 
             direction = true;
         }
