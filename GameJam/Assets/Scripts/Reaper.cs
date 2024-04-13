@@ -1,0 +1,27 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Reaper : MonoBehaviour
+{
+    private GameObject[] monsters;
+    public float speed = 1f;
+    // Start is called before the first frame update
+    void Start()
+    {
+        monsters = GameObject.FindGameObjectsWithTag("Monster");
+        foreach (var item in monsters)
+        {
+            print(item.name);
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (monsters.Length > 0)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, monsters[0].transform.position, speed * Time.deltaTime);
+        }
+    }
+}
