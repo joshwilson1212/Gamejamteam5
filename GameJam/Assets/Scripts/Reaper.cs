@@ -34,6 +34,10 @@ public class Reaper : MonoBehaviour
             collision.gameObject.SetActive(false);
             monsters = GameObject.FindGameObjectsWithTag("Monster");
         }
+        if(collision.CompareTag("Player"))
+        {
+            collision.gameObject.SetActive(false);
+        }
     }
 
     public void Summon(Vector3 playerLoc, int facing)
