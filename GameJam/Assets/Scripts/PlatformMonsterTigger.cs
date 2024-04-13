@@ -5,24 +5,11 @@ using UnityEngine;
 public class PlatformMonsterTigger : MonoBehaviour
 {
     public PlatformMonster monster;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // print("Platform Trigger Enter");
         if (collision.CompareTag("Player"))
         {
-            // print("Rise");
             monster.Rise();
         }
     }
@@ -31,9 +18,7 @@ public class PlatformMonsterTigger : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            // print("Rise");
             monster.Lower();
         }
     }
-
 }

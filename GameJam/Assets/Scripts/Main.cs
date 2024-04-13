@@ -43,6 +43,14 @@ public class Main : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+        if (input.Player.SummonPlatform.WasPressedThisFrame())
+        {
+            player.SummonPlatform();
+        }
+        if (input.Player.SummonReaper.WasPressedThisFrame())
+        {
+            player.SummonReaper();
+        }
 
     }
 }
