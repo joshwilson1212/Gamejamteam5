@@ -45,15 +45,15 @@ public class Main : MonoBehaviour
         }
         if (input.Player.SummonPlatform.WasPressedThisFrame())
         {
-            // player.HighlightPlatform();
+            player.HighlightPlatform();
         }
         if (input.Player.SummonReaper.WasPressedThisFrame())
         {
-            // player.HighlightReaper();
+            player.HighlightReaper();
         }
         if (input.Player.SummonMagpie.WasPressedThisFrame())
         {
-            // player.HighlightMagpie();
+            player.HighlightMagpie();
         }
         if (input.Player.SummonPlatform.WasReleasedThisFrame())
         {

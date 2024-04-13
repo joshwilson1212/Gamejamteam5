@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8537169223464638041}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.67, y: -0.55, z: 10}
   m_LocalScale: {x: 0.7767, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -176,12 +176,13 @@ MonoBehaviour:
   runForce: 700
   damping: 30
   plat: {fileID: 0}
-  platOffsetX: 0
-  platOffsetY: 0
+  platOffsetX: 2
+  platOffsetY: -0.3
   reaper: {fileID: 0}
-  reaperOffsetX: 0
+  reaperOffsetX: 1.5
   magpie: {fileID: 0}
-  magpieOffsetX: 0
+  magpieOffsetX: 0.8
+  highlight: {fileID: 8783471678906798633}
 --- !u!1 &8783471678906798633
 GameObject:
   m_ObjectHideFlags: 0
