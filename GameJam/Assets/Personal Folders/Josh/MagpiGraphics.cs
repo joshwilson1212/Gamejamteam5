@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+
+//this script is reponsible for swaping the orientation of the sprite depending on the direction its travling in
 public class MagpiGraphics : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //takes in the aipath of the bird
     public AIPath aipath;
 
-    // Update is called once per frame
+   
     void Update()
     {
         if (aipath.desiredVelocity.x >= .01f)
