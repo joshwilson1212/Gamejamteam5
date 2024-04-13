@@ -10,14 +10,20 @@ public class Player : MonoBehaviour
     private bool goLeft;
     private bool isGrounded;
     private int facing;
+    private bool hasKey;
 
     public PlatformMonster plat;
+    public float platOffsetX;
+    public float platOffsetY;
     public Reaper reaper;
+    public float reaperOffsetX;
     public pickupObject magpie;
+    public float magpieOffsetX;
 
     // Start is called before the first frame update
     void Start()
     {
+        hasKey = false;
         rb = GetComponent<Rigidbody2D>();
         goRight = false;
         goLeft = false;
@@ -76,7 +82,7 @@ public class Player : MonoBehaviour
         if (!plat.isActiveAndEnabled)
         {
             plat.gameObject.SetActive(true);
-            plat.Summon(transform.position, facing);
+            plat.Summon(transform.position,  facing * platOffsetX);
         }
     }
 
@@ -86,7 +92,7 @@ public class Player : MonoBehaviour
         if (!reaper.isActiveAndEnabled)
         {
             reaper.gameObject.SetActive(true);
-            reaper.Summon(transform.position, facing);
+            reaper.Summon(transform.position, facing * reaperOffsetX);
         }
     }
 
@@ -96,12 +102,27 @@ public class Player : MonoBehaviour
         if (!magpie.isActiveAndEnabled)
         {
             magpie.gameObject.SetActive(true);
-            magpie.Summon(transform.position, facing);
+            magpie.Summon(transform.position, facing * magpieOffsetX);
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         print(collision.gameObject.name);
+
+        if (collision.gameObject.CompareTag("shiny"))
+        {
+            Destroy(collision.gameObject);
+            hasKey = true;
+        }
+
+        if (collision.gameObject.CompareTag("Door"))
+        {
+            if (hasKey)
+            {
+                Destroy(collision.gameObject);
+            }
+            
+        }
     }
 }
