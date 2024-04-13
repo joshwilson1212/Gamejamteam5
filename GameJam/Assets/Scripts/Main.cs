@@ -47,6 +47,10 @@ public class Main : MonoBehaviour
         {
             player.SummonPlatform();
         }
+        if (input.Player.SummonReaper.WasPressedThisFrame())
+        {
+            player.SummonReaper();
+        }
 
     }
 }

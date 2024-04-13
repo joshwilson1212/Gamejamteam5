@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     private int facing;
 
     public PlatformMonster plat;
+    public Reaper reaper;
 
     // Start is called before the first frame update
     void Start()
@@ -76,5 +77,20 @@ public class Player : MonoBehaviour
             plat.gameObject.SetActive(true);
             plat.Summon(transform.position, facing);
         }
+    }
+
+    public void SummonReaper()
+    {
+        // print(plat.isActiveAndEnabled);
+        if (!reaper.isActiveAndEnabled)
+        {
+            reaper.gameObject.SetActive(true);
+            reaper.Summon(transform.position, facing);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        print(collision.gameObject.name);
     }
 }
