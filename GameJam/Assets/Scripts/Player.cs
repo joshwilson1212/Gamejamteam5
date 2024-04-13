@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     private bool goLeft;
     private bool isGrounded;
     private int facing;
+    private bool hasKey;
 
     public PlatformMonster plat;
     public Reaper reaper;
@@ -18,6 +19,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        hasKey = false;
         rb = GetComponent<Rigidbody2D>();
         goRight = false;
         goLeft = false;
@@ -103,5 +105,20 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         print(collision.gameObject.name);
+
+        if (collision.gameObject.CompareTag("shiny"))
+        {
+            Destroy(collision.gameObject);
+            hasKey = true;
+        }
+
+        if (collision.gameObject.CompareTag("Door"))
+        {
+            if (hasKey)
+            {
+                Destroy(collision.gameObject);
+            }
+            
+        }
     }
 }
