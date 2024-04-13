@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Monster
   - Moveable
+  - Key
   layers:
   - Default
   - TransparentFX
