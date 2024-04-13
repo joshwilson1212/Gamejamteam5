@@ -12,7 +12,7 @@ public class Reaper : MonoBehaviour
         monsters = GameObject.FindGameObjectsWithTag("Monster");
         foreach (var item in monsters)
         {
-            print(item.name);
+            // print(item.name);
         }
     }
 
@@ -22,6 +22,16 @@ public class Reaper : MonoBehaviour
         if (monsters.Length > 0)
         {
             transform.position = Vector3.MoveTowards(transform.position, monsters[0].transform.position, speed * Time.deltaTime);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        print(collision.name);
+        if (collision.CompareTag("Monster"))
+        {
+            collision.gameObject.SetActive(false);
+            monsters = GameObject.FindGameObjectsWithTag("Monster");
         }
     }
 }
