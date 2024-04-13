@@ -51,22 +51,13 @@ public class BulldozerMoveBehavior : MonoBehaviour
 
     public void Left(bool act)
     {
-        var x = transform.localScale.x;
-        var y = transform.localScale.y;
-        var z = transform.localScale.z;
-        print("Before scale flip: " + transform.localScale);
-        transform.localScale = new Vector3(-x, y, z);
-        print("After scale flip: " + transform.localScale);
         goLeft = act;
     }
 
     public void Right(bool act)
     {
-        var x = transform.localScale.x;
-        var y = transform.localScale.y;
-        var z = transform.localScale.z;
-        transform.localScale = new Vector3(x, y, z);
         goRight = act;
+        
     }
 
     
