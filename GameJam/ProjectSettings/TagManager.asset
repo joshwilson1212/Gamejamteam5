@@ -9,6 +9,7 @@ TagManager:
   - Moveable
   - Key
   - Tasty
+  - Door
   layers:
   - Default
   - TransparentFX
