@@ -165,13 +165,14 @@ GameObject:
   - component: {fileID: 6372806023309896215}
   - component: {fileID: 2884426271590552514}
   - component: {fileID: 4382464840804514450}
+  - component: {fileID: 8014755218245788029}
   m_Layer: 0
   m_Name: magpie
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8279175079984350512
 Transform:
   m_ObjectHideFlags: 0
@@ -321,4 +322,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newtarget: {fileID: 0}
+  offsetX: 1
   grabpoint: {fileID: 56165118215926599}
+--- !u!50 &8014755218245788029
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5873176893675557470}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 7
