@@ -6,9 +6,10 @@ using UnityEngine.UI;
 public class KeyCollection : MonoBehaviour
 {
     public Image testimage;
+    public GameObject key;
 
-    private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.CompareTag("Key")) {
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.CompareTag("Key")) {
             print("collided");
             testimage.color = new Color(1f, 1f, 1f, 1f);
         }
