@@ -13,8 +13,12 @@ public class Player : MonoBehaviour
     private bool hasKey;
 
     public PlatformMonster plat;
+    public float platOffsetX;
+    public float platOffsetY;
     public Reaper reaper;
+    public float reaperOffsetX;
     public pickupObject magpie;
+    public float magpieOffsetX;
 
     // Start is called before the first frame update
     void Start()
@@ -78,7 +82,7 @@ public class Player : MonoBehaviour
         if (!plat.isActiveAndEnabled)
         {
             plat.gameObject.SetActive(true);
-            plat.Summon(transform.position, facing);
+            plat.Summon(transform.position,  facing * platOffsetX);
         }
     }
 
@@ -88,7 +92,7 @@ public class Player : MonoBehaviour
         if (!reaper.isActiveAndEnabled)
         {
             reaper.gameObject.SetActive(true);
-            reaper.Summon(transform.position, facing);
+            reaper.Summon(transform.position, facing * reaperOffsetX);
         }
     }
 
@@ -98,7 +102,7 @@ public class Player : MonoBehaviour
         if (!magpie.isActiveAndEnabled)
         {
             magpie.gameObject.SetActive(true);
-            magpie.Summon(transform.position, facing);
+            magpie.Summon(transform.position, facing * magpieOffsetX);
         }
     }
 

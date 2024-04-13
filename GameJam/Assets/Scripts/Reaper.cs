@@ -6,7 +6,6 @@ public class Reaper : MonoBehaviour
 {
     private GameObject[] monsters;
     public float speed = 1f;
-    public float offsetX = 0.4f;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,8 +39,8 @@ public class Reaper : MonoBehaviour
         }
     }
 
-    public void Summon(Vector3 playerLoc, int facing)
+    public void Summon(Vector3 playerLoc, float offset)
     {
-        transform.position = playerLoc + new Vector3(offsetX * facing, 0);
+        transform.position = playerLoc + new Vector3(offset, 0);
     }
 }
