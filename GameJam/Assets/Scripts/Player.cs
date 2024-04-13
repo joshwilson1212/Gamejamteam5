@@ -22,11 +22,11 @@ public class Player : MonoBehaviour
     {
         if (goLeft && !goRight)
         {
-            rb.AddForce(Vector3.left * runForce, ForceMode2D.Force);
+            rb.AddForce(Vector3.left * runForce * Time.deltaTime, ForceMode2D.Force);
         }
         else if (goRight && !goLeft)
         {
-            rb.AddForce(Vector3.right * runForce, ForceMode2D.Force);
+            rb.AddForce(Vector3.right * runForce * Time.deltaTime, ForceMode2D.Force);
         }
     }
 
