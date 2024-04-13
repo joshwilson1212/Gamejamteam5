@@ -66,6 +66,7 @@ public class PlatformMonster : Charater
             snapArea.SetActive(true);
             // print("SNAPED");
             snapped = true;
+            Lower();
         }
     }
 

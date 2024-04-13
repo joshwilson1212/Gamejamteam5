@@ -18,7 +18,7 @@ public class PlatformMonsterTigger : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            monster.Lower();
+            // monster.Lower();
         }
     }
 }
