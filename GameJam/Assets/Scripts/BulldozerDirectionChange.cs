@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class BulldozerDirectionChange : MonoBehaviour
 {
-
     private GameObject bulldozer;
+    private Vector3 spriteFacing;
     private bool direction;
     private float speedTimer;
 
@@ -14,6 +14,7 @@ public class BulldozerDirectionChange : MonoBehaviour
     void Start()
     {
         bulldozer = GameObject.Find("bulldozer_updated_0");
+        spriteFacing = bulldozer.transform.localScale;
         direction = true;
         speedTimer = 0;
     }
@@ -26,12 +27,17 @@ public class BulldozerDirectionChange : MonoBehaviour
         {
             //print(bulldozer.GetComponent<Rigidbody2D>().velocity.x);
             speedTimer += Time.deltaTime;
-            // if its been that way for 2 seconds, flip direction
+            // if its been that way for .75 seconds, flip direction
             if (speedTimer > .75)
             {
+                print("Flipping direction because speed too low.");
                 FlipDirection();
                 speedTimer = 0;
             }
+        }
+        else
+        {
+            speedTimer = 0;
         }
     }
 
@@ -44,6 +50,7 @@ public class BulldozerDirectionChange : MonoBehaviour
         }
         else
         {
+            print("hit wall, flipping");
             FlipDirection();
         }
 
@@ -55,16 +62,30 @@ public class BulldozerDirectionChange : MonoBehaviour
         // goes right if direction == true, otherwise left
         if (direction)
         {
-            //print("Bulldozer going right");
-            bulldozer.GetComponent<BulldozerMoveBehavior>().Left(true);
-            bulldozer.GetComponent<BulldozerMoveBehavior>().Right(false);
+            bulldozer.GetComponent<BulldozerMoveBehavior>().Left(false);
+            bulldozer.GetComponent<BulldozerMoveBehavior>().Right(true);
+            
+
+            var x = spriteFacing.x;
+            var y = spriteFacing.y;
+            var z = spriteFacing.z;
+            bulldozer.transform.localScale = new Vector3(x, y, z);
+            print("Bulldozer Going right");
+
             direction = false;
         }
         else
         {
-            //print("Bulldozer going left");
-            bulldozer.GetComponent<BulldozerMoveBehavior>().Left(false);
-            bulldozer.GetComponent<BulldozerMoveBehavior>().Right(true);
+            bulldozer.GetComponent<BulldozerMoveBehavior>().Left(true);
+            bulldozer.GetComponent<BulldozerMoveBehavior>().Right(false);
+            
+
+            var x = spriteFacing.x;
+            var y = spriteFacing.y;
+            var z = spriteFacing.z;
+            bulldozer.transform.localScale = new Vector3(-x, y, z);
+            print("Bulldozer Going left");
+
             direction = true;
         }
     }
