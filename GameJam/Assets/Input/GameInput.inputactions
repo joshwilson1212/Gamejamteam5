@@ -1,0 +1,60 @@
+{
+    "name": "GameInput",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "e826a16b-2428-4b0e-a41a-fe11e9567f19",
+            "actions": [
+                {
+                    "name": "Left",
+                    "type": "Button",
+                    "id": "40962281-876f-4d61-a072-72fd6b69b30b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Right",
+                    "type": "Button",
+                    "id": "e75c4995-0528-4137-8555-d98006f8545d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "53f65c87-dfc3-4bd6-a14a-df3e6b825da2",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GameInput",
+                    "action": "Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cba33661-8810-4c6a-ab76-d8f4ea341aa2",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GameInput",
+                    "action": "Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "GameInput",
+            "bindingGroup": "GameInput",
+            "devices": []
+        }
+    ]
+}
