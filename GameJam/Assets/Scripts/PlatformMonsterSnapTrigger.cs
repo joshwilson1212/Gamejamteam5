@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlatformMonsterTigger : MonoBehaviour
+public class PlatformMonsterSnapTrigger : MonoBehaviour
 {
-    public PlatformMonster monster;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,21 +20,9 @@ public class PlatformMonsterTigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // print("Platform Trigger Enter");
         if (collision.CompareTag("Player"))
         {
-            // print("Rise");
-            monster.Rise();
+            collision.gameObject.SetActive(false);
         }
     }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            // print("Rise");
-            monster.Lower();
-        }
-    }
-
 }

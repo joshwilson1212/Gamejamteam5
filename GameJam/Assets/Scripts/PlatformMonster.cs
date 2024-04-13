@@ -8,7 +8,7 @@ public enum PlatformState {
     FALLING,
 }
 
-public class PlatformMonster : MonoBehaviour
+public class PlatformMonster : Charater
 {
     public float riseHeight = 10;
     public float timeToAttack = 2;
@@ -42,9 +42,9 @@ public class PlatformMonster : MonoBehaviour
         }
         if (transform.position.y == (originalHeight))
         {
-            print("Down");
+            // print("Down");
             snapped = false;
-            snapArea.SetActive(false);
+            // snapArea.SetActive(false);
         }
     }
 
@@ -63,7 +63,7 @@ public class PlatformMonster : MonoBehaviour
         if (!snapped)
         {
             snapArea.SetActive(true);
-            print("SNAPED");
+            // print("SNAPED");
             snapped = true;
         }
     }
