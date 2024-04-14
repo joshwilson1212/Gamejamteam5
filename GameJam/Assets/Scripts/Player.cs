@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     public float reaperOffsetX;
     public pickupObject magpie;
     public float magpieOffsetX;
+    public BulldozerMoveBehavior bulldozer;
     public float bullOffsetX;
 
     public GameObject highlight;
@@ -151,6 +152,24 @@ public class Player : MonoBehaviour
             highlight.SetActive(false);
             reaper.gameObject.SetActive(true);
             reaper.Summon(transform.position, facing * reaperOffsetX);
+        }
+    }
+
+    public void HighlightBulldozer()
+    {
+        isHighlighting = 3;
+        highlight.SetActive(true);
+    }
+
+    public void SummonBulldozer()
+    {
+        // print(plat.isActiveAndEnabled);
+        if (!reaper.isActiveAndEnabled)
+        {
+            isHighlighting = 0;
+            highlight.SetActive(false);
+            bulldozer.gameObject.SetActive(true);
+            bulldozer.Summon(transform.position, facing * reaperOffsetX, facing);
         }
     }
 

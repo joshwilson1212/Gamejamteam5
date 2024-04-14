@@ -57,7 +57,7 @@ public class Main : MonoBehaviour
         }
         if (input.Player.SummonBulldozer.WasPressedThisFrame())
         {
-            // player.HighlightBulldozer();
+            player.HighlightBulldozer();
         }
         if (input.Player.SummonPlatform.WasReleasedThisFrame())
         {
@@ -73,7 +73,7 @@ public class Main : MonoBehaviour
         }
         if (input.Player.SummonBulldozer.WasPressedThisFrame())
         {
-            // player.SummonBulldozer();
+            player.SummonBulldozer();
         }
     }
 }
