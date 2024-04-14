@@ -71,21 +71,41 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update(){
 
-        if (plantUnlocked == true && !(plant.gameObject == null)) {
+        if (plantUnlocked == true) {
             plant.gameObject.SetActive(true);
         }
 
-        if (bullUnlocked == true && !(bull.gameObject == null)) {
+        if (bullUnlocked == true) {
             bull.gameObject.SetActive(true);
         }
-        if (magpieUnlocked == true && !(maggy.gameObject == null)) {
+        if (magpieUnlocked == true) {
             maggy.gameObject.SetActive(true);
         }
 
-        if (reaperUnlocked == true && !(reapy.gameObject == null)) {
+        if (reaperUnlocked == true) {
             reapy.gameObject.SetActive(true);
         }
-        
+
+        print("plant: " +  plant.isActiveAndEnabled);
+        if (plantUsed < 2 && !(plat.isActiveAndEnabled))
+        {
+            plant.color = new Color(1f, 1f, 1f, 1f);
+        }
+
+        if (bullUsed < 2 && !(bulldozer.isActiveAndEnabled))
+        {
+            bull.color = new Color(1f, 1f, 1f, 1f);
+        }
+        if (magpieUsed < 2 && !(magpie.isActiveAndEnabled))
+        {
+            maggy.color = new Color(1f, 1f, 1f, 1f);
+        }
+
+        if (reaperUsed < 2 && !(reaper.isActiveAndEnabled))
+        {
+            reapy.color = new Color(1f, 1f, 1f, 1f);
+        }
+
 
         if ( rb.velocity.y == 0){
             isGrounded = true;
@@ -153,7 +173,7 @@ public class Player : MonoBehaviour
             isHighlighting = 0;
             highlight.SetActive(false);
             plat.gameObject.SetActive(true);
-            plat.Summon(transform.position,  facing * platOffsetX, platOffsetY);
+            plat.Summon(transform.position,  facing * platOffsetX, platOffsetY, transform.position.y);
             plantUsed++;
             plant.color = new Color(1f, 1f, 1f, 0.3f);
         }
