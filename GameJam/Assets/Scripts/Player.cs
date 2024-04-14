@@ -149,8 +149,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    
-
     public void SummonBulldozer(){
         if (!bulldozer.isActiveAndEnabled && bullUnlocked && bullUsed < 2)
         {
@@ -202,6 +200,26 @@ public class Player : MonoBehaviour
                 Destroy(collision.gameObject);
                 soundManager.Instance.Play(SoundType.DOOR);
             }
+        }
+        if (collision.gameObject.CompareTag("PlantSpell"))
+        {
+            collision.gameObject.SetActive(false);
+            plantUnlocked = true;
+        }
+        if (collision.gameObject.CompareTag("BullSpell"))
+        {
+            collision.gameObject.SetActive(false);
+            bullUnlocked = true;
+        }
+        if (collision.gameObject.CompareTag("MagSpell"))
+        {
+            collision.gameObject.SetActive(false);
+            magpieUnlocked = true;
+        }
+        if (collision.gameObject.CompareTag("ReapSpell"))
+        {
+            collision.gameObject.SetActive(false);
+            reaperUnlocked = true;
         }
     }
 }
