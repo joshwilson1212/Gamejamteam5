@@ -36,7 +36,7 @@ public class Reaper : MonoBehaviour
     {
         // GameObject closestObject = null;
         // tempLength = monsters.Length;
-        // monsters = GameObject.FindGameObjectsWithTag("Monster");
+        monsters = GameObject.FindGameObjectsWithTag("Monster");
         
         //print("Length: " + monsters.Length);
 
