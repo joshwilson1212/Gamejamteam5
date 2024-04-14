@@ -242,7 +242,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3738929696294387754, guid: 70192b71b88aa524fb96991f30dc0976, type: 3}
       propertyPath: plantUnlocked
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3738929696294387754, guid: 70192b71b88aa524fb96991f30dc0976, type: 3}
       propertyPath: magpieUnlocked
