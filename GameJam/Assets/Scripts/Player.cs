@@ -29,6 +29,11 @@ public class Player : MonoBehaviour
     public GameObject highlight;
     private int isHighlighting;
 
+    public bool plantUnlocked;
+    public bool bullUnlocked;
+    public bool magpieUnlocked;
+    public bool reaperUnlocked;
+
     // Start is called before the first frame update
     void Start(){
         step = GetComponent<AudioSource>();
@@ -99,7 +104,7 @@ public class Player : MonoBehaviour
     }
 
     public void SummonPlatform(){
-        if (!plat.isActiveAndEnabled){
+        if (!plat.isActiveAndEnabled && plantUnlocked){
             isHighlighting = 0;
             highlight.SetActive(false);
             plat.gameObject.SetActive(true);
@@ -108,14 +113,16 @@ public class Player : MonoBehaviour
     }
 
     public void HighlightPlatform(){
-        if (!plat.isActiveAndEnabled){
+        if (!plat.isActiveAndEnabled && plantUnlocked)
+        {
             isHighlighting = 1;
             highlight.SetActive(true);
         }
     }
 
     public void SummonMagpie(){
-        if (!magpie.isActiveAndEnabled){
+        if (!magpie.isActiveAndEnabled && magpieUnlocked)
+        {
             isHighlighting = 0;
             highlight.SetActive(false);
             magpie.gameObject.SetActive(true);
@@ -124,21 +131,24 @@ public class Player : MonoBehaviour
     }
 
     public void HighlightMagpie(){
-        if (!magpie.isActiveAndEnabled){
+        if (!magpie.isActiveAndEnabled && magpieUnlocked)
+        {
             isHighlighting = 2;
             highlight.SetActive(true);
         }
     }
 
     public void HighlightBulldozer(){
-        if (!bulldozer.isActiveAndEnabled){
+        if (!bulldozer.isActiveAndEnabled && bullUnlocked)
+        {
             isHighlighting = 3;
             highlight.SetActive(true);
         }
     }
 
     public void SummonBulldozer(){
-        if (!bulldozer.isActiveAndEnabled){
+        if (!bulldozer.isActiveAndEnabled && bullUnlocked)
+        {
             isHighlighting = 0;
             highlight.SetActive(false);
             bulldozer.gameObject.SetActive(true);
@@ -147,7 +157,7 @@ public class Player : MonoBehaviour
     }
 
     public void SummonReaper(){
-        if (!reaper.isActiveAndEnabled){
+        if (!reaper.isActiveAndEnabled && reaperUnlocked){
             isHighlighting = 0;
             highlight.SetActive(false);
             reaper.gameObject.SetActive(true);
@@ -156,7 +166,8 @@ public class Player : MonoBehaviour
     }
 
     public void HighlightReaper(){
-        if (!reaper.isActiveAndEnabled){
+        if (!reaper.isActiveAndEnabled && reaperUnlocked)
+        {
             isHighlighting = 4;
             highlight.SetActive(true);
         }
