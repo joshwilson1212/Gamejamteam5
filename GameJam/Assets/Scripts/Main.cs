@@ -55,6 +55,10 @@ public class Main : MonoBehaviour
         {
             player.HighlightMagpie();
         }
+        if (input.Player.SummonBulldozer.WasPressedThisFrame())
+        {
+            // player.HighlightBulldozer();
+        }
         if (input.Player.SummonPlatform.WasReleasedThisFrame())
         {
             player.SummonPlatform();
@@ -67,6 +71,9 @@ public class Main : MonoBehaviour
         {
             player.SummonMagpie();
         }
-
+        if (input.Player.SummonBulldozer.WasPressedThisFrame())
+        {
+            // player.SummonBulldozer();
+        }
     }
 }

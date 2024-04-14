@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     public float reaperOffsetX;
     public pickupObject magpie;
     public float magpieOffsetX;
+    public float bullOffsetX;
 
     public GameObject highlight;
     private int isHighlighting;
@@ -69,6 +70,10 @@ public class Player : MonoBehaviour
         if (isHighlighting == 2)
         {
             highlight.transform.position = transform.position + new Vector3(magpieOffsetX * facing, 0);
+        }
+        if (isHighlighting == 3)
+        {
+            highlight.transform.position = transform.position + new Vector3(bullOffsetX * facing, 0);
         }
         if (isHighlighting == 4)
         {
