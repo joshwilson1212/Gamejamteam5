@@ -187,6 +187,10 @@ MonoBehaviour:
   bulldozer: {fileID: 0}
   bullOffsetX: 2
   highlight: {fileID: 8783471678906798633}
+  plantUnlocked: 1
+  bullUnlocked: 1
+  magpieUnlocked: 1
+  reaperUnlocked: 1
 --- !u!82 &3707880068436146201
 AudioSource:
   m_ObjectHideFlags: 0
