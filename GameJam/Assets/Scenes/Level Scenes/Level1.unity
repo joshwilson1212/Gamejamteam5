@@ -12501,6 +12501,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 982495543489806241, guid: 32c84db7fceef154b8476b5553ca1fa6, type: 3}
+      propertyPath: levelName
+      value: Level2
+      objectReference: {fileID: 0}
     - target: {fileID: 5396311304830131739, guid: 32c84db7fceef154b8476b5553ca1fa6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15.71
@@ -12691,6 +12695,14 @@ PrefabInstance:
       propertyPath: bulldozer
       value: 
       objectReference: {fileID: 1024215682}
+    - target: {fileID: 3738929696294387754, guid: 70192b71b88aa524fb96991f30dc0976, type: 3}
+      propertyPath: bullUnlocked
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738929696294387754, guid: 70192b71b88aa524fb96991f30dc0976, type: 3}
+      propertyPath: plantUnlocked
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3738929696294387754, guid: 70192b71b88aa524fb96991f30dc0976, type: 3}
       propertyPath: magpieUnlocked
       value: 0
