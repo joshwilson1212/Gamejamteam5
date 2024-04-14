@@ -1,5 +1,7 @@
+using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public enum ReaperState
@@ -17,6 +19,7 @@ public class Reaper : MonoBehaviour
     private int closestObjectPlace;
     private int tempLength;
     private bool hasTarget;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Awake()
@@ -25,6 +28,7 @@ public class Reaper : MonoBehaviour
         monsters = GameObject.FindGameObjectsWithTag("Monster");
         tempLength = monsters.Length;
         hasTarget = false;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -33,6 +37,7 @@ public class Reaper : MonoBehaviour
         // GameObject closestObject = null;
         // tempLength = monsters.Length;
         // monsters = GameObject.FindGameObjectsWithTag("Monster");
+        
         print("Length: " + monsters.Length);
         if (!hasTarget && monsters.Length != 0)// if (tempLength != monsters.Length || gameObject == null || closestObjectPlace > monsters.Length - 1)
         {
@@ -51,12 +56,20 @@ public class Reaper : MonoBehaviour
             }
             hasTarget = true;
         }
-        //}
         if (monsters.Length > 0)
         {
+            if (transform.position.x - monsters[closestObjectPlace].transform.position.x >= .01f)
+            {
+                transform.localScale = new Vector3(-1f, 1f, 1f);
+            }
+            else if (transform.position.x - monsters[closestObjectPlace].transform.position.x <= -.01f)
+            {
+                transform.localScale = new Vector3(1f, 1f, 1f);
+            }
             print(closestObjectPlace);
             state = ReaperState.Monster;
             transform.position = Vector3.MoveTowards(transform.position, monsters[closestObjectPlace].transform.position, speed * Time.deltaTime);
+
         }
         else if (monsters.Length == 0)
         {
@@ -75,12 +88,14 @@ public class Reaper : MonoBehaviour
         print(collision.name);
         if(collision.CompareTag("Monster"))
         {
+            animator.Play("ReaperSlice");
             collision.gameObject.SetActive(false);
             monsters = GameObject.FindGameObjectsWithTag("Monster");
             hasTarget = false;
         }
         if(collision.CompareTag("Player"))
         {
+            animator.Play("ReaperSlice");
             collision.gameObject.SetActive(false);
         }
     }
