@@ -462,7 +462,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 874933896038587746}
-  - component: {fileID: 8515702281561773957}
   m_Layer: 5
   m_Name: SummonKeys
   m_TagString: Untagged
@@ -493,23 +492,6 @@ RectTransform:
   m_AnchoredPosition: {x: -221, y: -105}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8515702281561773957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7194445934296647755}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 084e4ab6f45e8084788158445ad41f90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  plant: {fileID: 5619434439151807481}
-  bull: {fileID: 8101206522819752098}
-  magPie: {fileID: 8274402579243087976}
-  reaper: {fileID: 6504856779264294583}
-  p: {fileID: 0}
 --- !u!1 &7445858933847912321
 GameObject:
   m_ObjectHideFlags: 0
