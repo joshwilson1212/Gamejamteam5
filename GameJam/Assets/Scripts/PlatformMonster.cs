@@ -20,6 +20,7 @@ public class PlatformMonster : Charater
     public GameObject snapArea;
     public float offsetX = 3;
     private Animator anim;
+    private AudioSource audioSource;
 
     void Awake()
     {
@@ -27,6 +28,7 @@ public class PlatformMonster : Charater
         state = PlatformState.IDLE;
         snapped = false;
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -34,14 +36,26 @@ public class PlatformMonster : Charater
         if (state == PlatformState.RISING && transform.position.y < originalHeight + riseHeight && !snapped)
         {
             // transform.position = new Vector3(transform.position.x, transform.position.y * riseSpeed * Time.deltaTime, transform.position.z);
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, originalHeight + riseHeight, transform.position.z), riseSpeed * Time.deltaTime);
         }
         else if (state == PlatformState.FALLING)
         {
+            if (audioSource.isPlaying)
+            {
+                audioSource.Stop();
+            }
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, originalHeight, transform.position.z), riseSpeed * Time.deltaTime);
         }
         if (transform.position.y >= (originalHeight + riseHeight) - (originalHeight + riseHeight) * 0.05 && !snapped)
         {
+            if (audioSource.isPlaying)
+            {
+                audioSource.Stop();
+            }
             Invoke("SnapAnim", timeToAnim);
             Invoke("Snap", timeToAttack);
         }
