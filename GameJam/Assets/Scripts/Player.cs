@@ -61,6 +61,19 @@ public class Player : MonoBehaviour
         {
             rb.velocity = Vector2.MoveTowards(rb.velocity, Vector2.zero, damping * Time.deltaTime);
         }
+
+        if (isHighlighting == 1)
+        {
+            highlight.transform.position = transform.position + new Vector3(platOffsetX * facing, -0.3f);
+        }
+        if (isHighlighting == 2)
+        {
+            highlight.transform.position = transform.position + new Vector3(magpieOffsetX * facing, 0);
+        }
+        if (isHighlighting == 4)
+        {
+            highlight.transform.position = transform.position + new Vector3(reaperOffsetX * facing, 0);
+        }
     }
 
     public void Jump()
@@ -86,6 +99,7 @@ public class Player : MonoBehaviour
         // print(plat.isActiveAndEnabled);
         if (!plat.isActiveAndEnabled)
         {
+            isHighlighting = 0;
             highlight.SetActive(false);
             plat.gameObject.SetActive(true);
             plat.Summon(transform.position,  facing * platOffsetX);
@@ -94,25 +108,8 @@ public class Player : MonoBehaviour
 
     public void HighlightPlatform()
     {
+        isHighlighting = 1;
         highlight.SetActive(true);
-        highlight.transform.position = transform.position + new Vector3(platOffsetX, -0.3f);
-    }
-
-    public void SummonReaper()
-    {
-        // print(plat.isActiveAndEnabled);
-        if (!reaper.isActiveAndEnabled)
-        {
-            highlight.SetActive(false);
-            reaper.gameObject.SetActive(true);
-            reaper.Summon(transform.position, facing * reaperOffsetX);
-        }
-    }
-
-    public void HighlightReaper()
-    {
-        highlight.SetActive(true);
-        highlight.transform.position = transform.position + new Vector3(reaperOffsetX, 0);
     }
 
     public void SummonMagpie()
@@ -120,6 +117,7 @@ public class Player : MonoBehaviour
         // print(plat.isActiveAndEnabled);
         if (!magpie.isActiveAndEnabled)
         {
+            isHighlighting = 0;
             highlight.SetActive(false);
             magpie.gameObject.SetActive(true);
             magpie.Summon(transform.position, facing * magpieOffsetX);
@@ -128,8 +126,26 @@ public class Player : MonoBehaviour
 
     public void HighlightMagpie()
     {
+        isHighlighting = 2;
         highlight.SetActive(true);
-        highlight.transform.position = transform.position + new Vector3(magpieOffsetX, 0);
+    }
+
+    public void SummonReaper()
+    {
+        // print(plat.isActiveAndEnabled);
+        if (!reaper.isActiveAndEnabled)
+        {
+            isHighlighting = 0;
+            highlight.SetActive(false);
+            reaper.gameObject.SetActive(true);
+            reaper.Summon(transform.position, facing * reaperOffsetX);
+        }
+    }
+
+    public void HighlightReaper()
+    {
+        isHighlighting = 4;
+        highlight.SetActive(true);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

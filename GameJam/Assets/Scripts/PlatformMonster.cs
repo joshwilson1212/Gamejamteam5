@@ -28,7 +28,7 @@ public class PlatformMonster : Charater
 
     void Update()
     {
-        if (state == PlatformState.RISING && transform.position.y < originalHeight + riseHeight)
+        if (state == PlatformState.RISING && transform.position.y < originalHeight + riseHeight && !snapped)
         {
             // transform.position = new Vector3(transform.position.x, transform.position.y * riseSpeed * Time.deltaTime, transform.position.z);
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, originalHeight + riseHeight, transform.position.z), riseSpeed * Time.deltaTime);
@@ -72,6 +72,6 @@ public class PlatformMonster : Charater
 
     public void Summon(Vector3 playerLoc, float offset)
     {
-        transform.position = playerLoc + new Vector3(offset, -0.3f);
+        transform.position = playerLoc + new Vector3(offset, 0f);
     }
 }
