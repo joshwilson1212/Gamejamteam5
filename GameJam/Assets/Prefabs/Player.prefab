@@ -252,7 +252,7 @@ MonoBehaviour:
   highlight: {fileID: 8783471678906798633}
   plantUnlocked: 0
   bullUnlocked: 0
-  magpieUnlocked: 0
+  magpieUnlocked: 1
   reaperUnlocked: 0
 --- !u!82 &3707880068436146201
 AudioSource:
