@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.LowLevel;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -34,6 +35,11 @@ public class Player : MonoBehaviour
     public bool magpieUnlocked;
     public bool reaperUnlocked;
 
+    public Image plant;
+    public Image bull;
+    public Image maggy;
+    public Image reapy;
+
     private int plantUsed;
     private int bullUsed;
     private int magpieUsed;
@@ -53,10 +59,27 @@ public class Player : MonoBehaviour
         bullUsed = 0;
         magpieUsed = 0;
         reaperUsed = 0;
+
     }
 
     // Update is called once per frame
     void Update(){
+
+        if (plantUnlocked == true) {
+            plant.gameObject.SetActive(true);
+        }
+
+        if (bullUnlocked == true) {
+            bull.gameObject.SetActive(true);
+        }
+        if (magpieUnlocked == true) {
+            maggy.gameObject.SetActive(true);
+        }
+
+        if (reaperUnlocked == true) {
+            reapy.gameObject.SetActive(true);
+        }
+
         if ( rb.velocity.y == 0){
             isGrounded = true;
         }
