@@ -3,6 +3,7 @@ using UnityEngine.LowLevel;
 
 public class Player : MonoBehaviour
 {
+    
     public float appliedForce = 20;
     public float runForce = 3;
     public float damping;
@@ -53,11 +54,16 @@ public class Player : MonoBehaviour
         {
             facing = -1;
             rb.AddForce(Vector3.left * runForce * Time.deltaTime, ForceMode2D.Force);
+           
+            soundManager.Instance.Play(SoundType.STEP);
+
         }
         else if (goRight && !goLeft)
         {
             facing = 1;
             rb.AddForce(Vector3.right * runForce * Time.deltaTime, ForceMode2D.Force);
+            soundManager.Instance.Play(SoundType.STEP);
+            
         }
         else if (isGrounded)
         {
@@ -92,6 +98,7 @@ public class Player : MonoBehaviour
 
     public void Left(bool act)
     {
+
         goLeft = act;
     }
 
@@ -180,13 +187,16 @@ public class Player : MonoBehaviour
         {
             Destroy(collision.gameObject);
             hasKey = true;
+            soundManager.Instance.Play(SoundType.DING);
         }
 
         if (collision.gameObject.CompareTag("Door"))
         {
             if (hasKey)
             {
+                
                 Destroy(collision.gameObject);
+                soundManager.Instance.Play(SoundType.DOOR);
             }
             
         }
