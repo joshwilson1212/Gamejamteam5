@@ -1,4 +1,6 @@
+using System.Net;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.LowLevel;
 using UnityEngine.UI;
 
@@ -65,20 +67,21 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update(){
 
-        if (plantUnlocked == true) {
+        if (plantUnlocked == true && !(plant.gameObject == null)) {
             plant.gameObject.SetActive(true);
         }
 
-        if (bullUnlocked == true) {
+        else if (bullUnlocked == true && !(bull.gameObject == null)) {
             bull.gameObject.SetActive(true);
         }
-        if (magpieUnlocked == true) {
+        else if (magpieUnlocked == true && !(maggy.gameObject == null)) {
             maggy.gameObject.SetActive(true);
         }
 
-        if (reaperUnlocked == true) {
+        else if (reaperUnlocked == true && !(reapy.gameObject == null)) {
             reapy.gameObject.SetActive(true);
         }
+        
 
         if ( rb.velocity.y == 0){
             isGrounded = true;
