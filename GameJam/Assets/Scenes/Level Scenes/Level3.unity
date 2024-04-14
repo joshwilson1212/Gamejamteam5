@@ -1024,6 +1024,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlatformMon
       objectReference: {fileID: 0}
+    - target: {fileID: 6996692498052300378, guid: 92b0f83b39ccccb448efbcd90cea691f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1289,7 +1293,7 @@ GameObject:
   - component: {fileID: 1223004667}
   m_Layer: 0
   m_Name: Button
-  m_TagString: Untagged
+  m_TagString: Moveable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
