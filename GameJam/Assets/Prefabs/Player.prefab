@@ -255,6 +255,10 @@ MonoBehaviour:
   bullUnlocked: 0
   magpieUnlocked: 1
   reaperUnlocked: 0
+  plant: {fileID: 0}
+  bull: {fileID: 0}
+  maggy: {fileID: 0}
+  reapy: {fileID: 0}
 --- !u!82 &3707880068436146201
 AudioSource:
   m_ObjectHideFlags: 0
@@ -508,7 +512,7 @@ Transform:
   m_GameObject: {fileID: 8563731759517988705}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.33989948, y: -0.12600005, z: -10}
+  m_LocalPosition: {x: 0.33989948, y: -0.12600005, z: 0}
   m_LocalScale: {x: 0.72304624, y: 0.56159, z: 0.56159}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -554,7 +558,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: ee9e0970555c4114cad3f75ad8759612, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
