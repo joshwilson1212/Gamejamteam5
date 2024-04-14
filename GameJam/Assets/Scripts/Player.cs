@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
     
     public float appliedForce = 20;
     public float runForce = 3;
+    public float maxSpeed = 4;
     public float damping;
     private Rigidbody2D rb;
     private bool goRight;
@@ -50,7 +51,8 @@ public class Player : MonoBehaviour
         {
             isGrounded= false;
         }
-        if (goLeft && !goRight)
+        // print(rb.velocity.x);
+        if (goLeft && !goRight && rb.velocity.x > -maxSpeed)
         {
             facing = -1;
             rb.AddForce(Vector3.left * runForce * Time.deltaTime, ForceMode2D.Force);
@@ -58,7 +60,7 @@ public class Player : MonoBehaviour
             soundManager.Instance.Play(SoundType.STEP);
 
         }
-        else if (goRight && !goLeft)
+        else if (goRight && !goLeft && rb.velocity.x < maxSpeed)
         {
             facing = 1;
             rb.AddForce(Vector3.right * runForce * Time.deltaTime, ForceMode2D.Force);
