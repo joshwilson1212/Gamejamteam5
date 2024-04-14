@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BulldozerMoveBehavior : MonoBehaviour
 {
-    private Rigidbody2D rigidbody;
+    private Rigidbody2D rb;
     private bool goRight;
     private bool goLeft;
     private bool isGrounded;
@@ -13,20 +13,25 @@ public class BulldozerMoveBehavior : MonoBehaviour
     public float appliedForce = 20;
     public float runForce = 3;
     public float damping;
+    public BulldozerDirectionChange bullDirChange;
+
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody = GameObject.Find("bulldozer_updated_0").GetComponent<Rigidbody2D>();
-        goRight = true;
+        // rigidbody = GameObject.Find("Bulldozer").GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
+        goRight = false;
         goLeft = false;
         isGrounded = false;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (rigidbody.velocity.y == 0)
+        if (GetComponent<Rigidbody2D>().velocity.y == 0)
         {
             isGrounded = true;
         }
@@ -37,16 +42,16 @@ public class BulldozerMoveBehavior : MonoBehaviour
         if (goLeft && !goRight)
         {
             //print("Bulldozer speeding left");
-            rigidbody.AddForce(Vector3.left * runForce * Time.deltaTime, ForceMode2D.Force);
+            GetComponent<Rigidbody2D>().AddForce(Vector3.left * runForce * Time.deltaTime, ForceMode2D.Force);
         }
         else if (goRight && !goLeft)
         {
             //print("Bulldozer speeding right");
-            rigidbody.AddForce(Vector3.right * runForce * Time.deltaTime, ForceMode2D.Force);
+            GetComponent<Rigidbody2D>().AddForce(Vector3.right * runForce * Time.deltaTime, ForceMode2D.Force);
         }
         else if (isGrounded)
         {
-            rigidbody.velocity = Vector2.MoveTowards(rigidbody.velocity, Vector2.zero, damping * Time.deltaTime);
+            GetComponent<Rigidbody2D>().velocity = Vector2.MoveTowards(GetComponent<Rigidbody2D>().velocity, Vector2.zero, damping * Time.deltaTime);
         }
     }
 
@@ -74,7 +79,26 @@ public class BulldozerMoveBehavior : MonoBehaviour
     private void DelPlayer()
     {
         
-        GameObject.Find("Player").SetActive(false);
+        player.SetActive(false);
+        //player.SetActive(false);
+    }
+
+    public void Summon(Vector3 playerLoc, float offset, int direction)
+    {
+        if (direction == -1)
+        {
+            goLeft = true;
+            goRight = false;
+            bullDirChange.direction = false;
+            print(bullDirChange.direction);
+        }
+        else
+        {
+            bullDirChange.direction = true;
+            goRight = true;
+            goLeft = false;
+        }
+        transform.position = playerLoc + new Vector3(offset, 0f);
     }
 
 }

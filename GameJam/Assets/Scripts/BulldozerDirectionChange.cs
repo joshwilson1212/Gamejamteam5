@@ -7,15 +7,15 @@ public class BulldozerDirectionChange : MonoBehaviour
 {
     private GameObject bulldozer;
     private Vector3 spriteFacing;
-    private bool direction;
+    public bool direction;
     private float speedTimer;
 
     // Start is called before the first frame update
     void Start()
     {
-        bulldozer = GameObject.Find("bulldozer_updated_0");
+        bulldozer = GameObject.Find("Bulldozer");
         spriteFacing = bulldozer.transform.localScale;
-        direction = true;
+        // direction = true;
         speedTimer = 0;
     }
 
@@ -44,7 +44,7 @@ public class BulldozerDirectionChange : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.CompareTag("Moveable") | collision.CompareTag("Player"))
+        if (collision.CompareTag("Moveable") | collision.CompareTag("Player") | collision.CompareTag("Hazard"))
         {
 
         }
@@ -57,7 +57,12 @@ public class BulldozerDirectionChange : MonoBehaviour
         
     }
 
-    private void FlipDirection()
+    public void SetDirection(bool newBool)
+    {
+        direction = newBool;
+    }
+
+    public void FlipDirection()
     {
         // goes right if direction == true, otherwise left
         if (direction)

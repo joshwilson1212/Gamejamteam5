@@ -3,6 +3,7 @@ using UnityEngine.LowLevel;
 
 public class Player : MonoBehaviour
 {
+    
     public float appliedForce = 20;
     public float runForce = 3;
     public float damping;
@@ -20,6 +21,8 @@ public class Player : MonoBehaviour
     public float reaperOffsetX;
     public pickupObject magpie;
     public float magpieOffsetX;
+    public BulldozerMoveBehavior bulldozer;
+    public float bullOffsetX;
 
     public GameObject highlight;
     private int isHighlighting;
@@ -51,15 +54,37 @@ public class Player : MonoBehaviour
         {
             facing = -1;
             rb.AddForce(Vector3.left * runForce * Time.deltaTime, ForceMode2D.Force);
+           
+            soundManager.Instance.Play(SoundType.STEP);
+
         }
         else if (goRight && !goLeft)
         {
             facing = 1;
             rb.AddForce(Vector3.right * runForce * Time.deltaTime, ForceMode2D.Force);
+            soundManager.Instance.Play(SoundType.STEP);
+            
         }
         else if (isGrounded)
         {
             rb.velocity = Vector2.MoveTowards(rb.velocity, Vector2.zero, damping * Time.deltaTime);
+        }
+
+        if (isHighlighting == 1)
+        {
+            highlight.transform.position = transform.position + new Vector3(platOffsetX * facing, -0.3f);
+        }
+        if (isHighlighting == 2)
+        {
+            highlight.transform.position = transform.position + new Vector3(magpieOffsetX * facing, 0);
+        }
+        if (isHighlighting == 3)
+        {
+            highlight.transform.position = transform.position + new Vector3(bullOffsetX * facing, 0);
+        }
+        if (isHighlighting == 4)
+        {
+            highlight.transform.position = transform.position + new Vector3(reaperOffsetX * facing, 0);
         }
     }
 
@@ -73,6 +98,7 @@ public class Player : MonoBehaviour
 
     public void Left(bool act)
     {
+
         goLeft = act;
     }
 
@@ -86,6 +112,7 @@ public class Player : MonoBehaviour
         // print(plat.isActiveAndEnabled);
         if (!plat.isActiveAndEnabled)
         {
+            isHighlighting = 0;
             highlight.SetActive(false);
             plat.gameObject.SetActive(true);
             plat.Summon(transform.position,  facing * platOffsetX);
@@ -94,25 +121,8 @@ public class Player : MonoBehaviour
 
     public void HighlightPlatform()
     {
+        isHighlighting = 1;
         highlight.SetActive(true);
-        highlight.transform.position = transform.position + new Vector3(platOffsetX, -0.3f);
-    }
-
-    public void SummonReaper()
-    {
-        // print(plat.isActiveAndEnabled);
-        if (!reaper.isActiveAndEnabled)
-        {
-            highlight.SetActive(false);
-            reaper.gameObject.SetActive(true);
-            reaper.Summon(transform.position, facing * reaperOffsetX);
-        }
-    }
-
-    public void HighlightReaper()
-    {
-        highlight.SetActive(true);
-        highlight.transform.position = transform.position + new Vector3(reaperOffsetX, 0);
     }
 
     public void SummonMagpie()
@@ -120,6 +130,7 @@ public class Player : MonoBehaviour
         // print(plat.isActiveAndEnabled);
         if (!magpie.isActiveAndEnabled)
         {
+            isHighlighting = 0;
             highlight.SetActive(false);
             magpie.gameObject.SetActive(true);
             magpie.Summon(transform.position, facing * magpieOffsetX);
@@ -128,8 +139,44 @@ public class Player : MonoBehaviour
 
     public void HighlightMagpie()
     {
+        isHighlighting = 2;
         highlight.SetActive(true);
-        highlight.transform.position = transform.position + new Vector3(magpieOffsetX, 0);
+    }
+
+    public void SummonReaper()
+    {
+        // print(plat.isActiveAndEnabled);
+        if (!reaper.isActiveAndEnabled)
+        {
+            isHighlighting = 0;
+            highlight.SetActive(false);
+            reaper.gameObject.SetActive(true);
+            reaper.Summon(transform.position, facing * reaperOffsetX);
+        }
+    }
+
+    public void HighlightBulldozer()
+    {
+        isHighlighting = 3;
+        highlight.SetActive(true);
+    }
+
+    public void SummonBulldozer()
+    {
+        // print(plat.isActiveAndEnabled);
+        if (!bulldozer.isActiveAndEnabled)
+        {
+            isHighlighting = 0;
+            highlight.SetActive(false);
+            bulldozer.gameObject.SetActive(true);
+            bulldozer.Summon(transform.position, facing * reaperOffsetX, facing);
+        }
+    }
+
+    public void HighlightReaper()
+    {
+        isHighlighting = 4;
+        highlight.SetActive(true);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -140,13 +187,16 @@ public class Player : MonoBehaviour
         {
             Destroy(collision.gameObject);
             hasKey = true;
+            soundManager.Instance.Play(SoundType.DING);
         }
 
         if (collision.gameObject.CompareTag("Door"))
         {
             if (hasKey)
             {
+                
                 Destroy(collision.gameObject);
+                soundManager.Instance.Play(SoundType.DOOR);
             }
             
         }
