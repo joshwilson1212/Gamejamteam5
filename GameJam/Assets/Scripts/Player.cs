@@ -164,7 +164,7 @@ public class Player : MonoBehaviour
     public void SummonBulldozer()
     {
         // print(plat.isActiveAndEnabled);
-        if (!reaper.isActiveAndEnabled)
+        if (!bulldozer.isActiveAndEnabled)
         {
             isHighlighting = 0;
             highlight.SetActive(false);
