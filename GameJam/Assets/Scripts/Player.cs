@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
         if (goLeft && !goRight && rb.velocity.x > -maxSpeed){
             facing = -1;
             rb.AddForce(Vector3.left * runForce * Time.deltaTime, ForceMode2D.Force);
-           
+            transform.localScale = new Vector3(-1f, 1f, 1f);
             if (!step.isPlaying){
                 step.Play();
             }
@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
         else if (goRight && !goLeft && rb.velocity.x < maxSpeed){
             facing = 1;
             rb.AddForce(Vector3.right * runForce * Time.deltaTime, ForceMode2D.Force);
-            
+            transform.localScale = new Vector3(1f, 1f, 1f);
             if (!step.isPlaying){
                 step.Play();
             }
