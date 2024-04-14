@@ -17,7 +17,7 @@ public class BulldozerMoveBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody = GameObject.Find("bulldozer_updated_0").GetComponent<Rigidbody2D>();
+        rigidbody = GetComponent<Rigidbody2D>();
         goRight = true;
         goLeft = false;
         isGrounded = false;
