@@ -2396,6 +2396,18 @@ PrefabInstance:
       propertyPath: magpie
       value: 
       objectReference: {fileID: 2085601230}
+    - target: {fileID: 3738929696294387754, guid: 70192b71b88aa524fb96991f30dc0976, type: 3}
+      propertyPath: bullUnlocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738929696294387754, guid: 70192b71b88aa524fb96991f30dc0976, type: 3}
+      propertyPath: plantUnlocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738929696294387754, guid: 70192b71b88aa524fb96991f30dc0976, type: 3}
+      propertyPath: magpieUnlocked
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8537169223464638041, guid: 70192b71b88aa524fb96991f30dc0976, type: 3}
       propertyPath: m_Name
       value: Player
