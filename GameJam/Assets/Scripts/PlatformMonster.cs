@@ -12,18 +12,21 @@ public class PlatformMonster : Charater
 {
     public float riseHeight = 10;
     public float timeToAttack = 2;
+    public float timeToAnim = 1;
     private float originalHeight;
     public float riseSpeed = 1.5f;
     private PlatformState state;
     private bool snapped;
     public GameObject snapArea;
     public float offsetX = 3;
+    private Animator anim;
 
     void Awake()
     {
         originalHeight = transform.position.y;
         state = PlatformState.IDLE;
         snapped = false;
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -39,6 +42,7 @@ public class PlatformMonster : Charater
         }
         if (transform.position.y >= (originalHeight + riseHeight) - (originalHeight + riseHeight) * 0.05 && !snapped)
         {
+            Invoke("SnapAnim", timeToAnim);
             Invoke("Snap", timeToAttack);
         }
         if (transform.position.y == (originalHeight))
@@ -46,6 +50,7 @@ public class PlatformMonster : Charater
             // print("Down");
             snapped = false;
             snapArea.SetActive(false);
+            anim.Play("FlytrapOpen");
         }
     }
 
@@ -59,10 +64,19 @@ public class PlatformMonster : Charater
         state = PlatformState.FALLING;
     }
 
-    public void Snap()
+    public void SnapAnim()
     {
         if (!snapped)
         {
+            soundManager.Instance.Play(SoundType.SNAPPERSNAP);
+            anim.Play("Flytrap");
+        }
+    }
+
+    public void Snap()
+    {
+        if (!snapped)
+        { 
             snapArea.SetActive(true);
             // print("SNAPED");
             snapped = true;
