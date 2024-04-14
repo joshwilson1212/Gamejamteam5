@@ -44,7 +44,7 @@ public class BulldozerDirectionChange : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.CompareTag("Moveable") | collision.CompareTag("Player"))
+        if (collision.CompareTag("Moveable") | collision.CompareTag("Player") | collision.CompareTag("Hazard"))
         {
 
         }

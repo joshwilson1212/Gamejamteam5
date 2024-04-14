@@ -11,7 +11,7 @@ public class ButtonInteraction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        door = GameObject.Find("Triangle");
+        door = GameObject.Find("TriangleDoor");
         shutDelay = 500;
     }
 
