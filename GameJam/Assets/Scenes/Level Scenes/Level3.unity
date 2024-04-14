@@ -189,6 +189,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2320690242396621322, guid: 0a763d94197de92439ee2b23847a3216, type: 3}
   m_PrefabInstance: {fileID: 65399683}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &65399685 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4361658111084438316, guid: 0a763d94197de92439ee2b23847a3216, type: 3}
+  m_PrefabInstance: {fileID: 65399683}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &75823240
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -391,6 +396,28 @@ MonoBehaviour:
 --- !u!114 &97261065 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5619434439151807481, guid: 3e9e926cc6838e14bbf2ec9cb0a74be6, type: 3}
+  m_PrefabInstance: {fileID: 97261061}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &97261066 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8593655421594178150, guid: 3e9e926cc6838e14bbf2ec9cb0a74be6, type: 3}
+  m_PrefabInstance: {fileID: 97261061}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &97261067 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3926598291869837367, guid: 3e9e926cc6838e14bbf2ec9cb0a74be6, type: 3}
   m_PrefabInstance: {fileID: 97261061}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -2668,6 +2695,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1184567542}
     m_Modifications:
+    - target: {fileID: 677126637124886110, guid: 70192b71b88aa524fb96991f30dc0976, type: 3}
+      propertyPath: key
+      value: 
+      objectReference: {fileID: 65399685}
+    - target: {fileID: 677126637124886110, guid: 70192b71b88aa524fb96991f30dc0976, type: 3}
+      propertyPath: keyImage
+      value: 
+      objectReference: {fileID: 97261067}
+    - target: {fileID: 677126637124886110, guid: 70192b71b88aa524fb96991f30dc0976, type: 3}
+      propertyPath: circleImage
+      value: 
+      objectReference: {fileID: 97261066}
     - target: {fileID: 1174262691886294740, guid: 70192b71b88aa524fb96991f30dc0976, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.493
