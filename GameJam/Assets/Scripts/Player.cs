@@ -71,14 +71,14 @@ public class Player : MonoBehaviour
             plant.gameObject.SetActive(true);
         }
 
-        else if (bullUnlocked == true && !(bull.gameObject == null)) {
+        if (bullUnlocked == true && !(bull.gameObject == null)) {
             bull.gameObject.SetActive(true);
         }
-        else if (magpieUnlocked == true && !(maggy.gameObject == null)) {
+        if (magpieUnlocked == true && !(maggy.gameObject == null)) {
             maggy.gameObject.SetActive(true);
         }
 
-        else if (reaperUnlocked == true && !(reapy.gameObject == null)) {
+        if (reaperUnlocked == true && !(reapy.gameObject == null)) {
             reapy.gameObject.SetActive(true);
         }
         
