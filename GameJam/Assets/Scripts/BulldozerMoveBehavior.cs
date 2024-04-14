@@ -22,7 +22,7 @@ public class BulldozerMoveBehavior : MonoBehaviour
     {
         // rigidbody = GameObject.Find("Bulldozer").GetComponent<Rigidbody2D>();
         rb = GetComponent<Rigidbody2D>();
-        goRight = true;
+        goRight = false;
         goLeft = false;
         isGrounded = false;
     }
@@ -88,14 +88,14 @@ public class BulldozerMoveBehavior : MonoBehaviour
         {
             goLeft = true;
             goRight = false;
-            //print(bullDirChange.direction);
-            //bullDirChange.SetDirection(false);
-            // GetComponentInChildren<BulldozerDirectionChange>().FlipDirection();
             bullDirChange.direction = false;
             print(bullDirChange.direction);
         }
         else
         {
+            bullDirChange.direction = true;
+            goRight = true;
+            goLeft = false;
         }
         transform.position = playerLoc + new Vector3(offset, 0f);
     }
