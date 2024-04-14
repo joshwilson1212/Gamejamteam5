@@ -1327,7 +1327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21ff517cc3f662849b3eac27e137a832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelName: Level2
+  levelName: Level3
 --- !u!61 &832250396
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1554,6 +1554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  player: {fileID: 0}
 --- !u!61 &914408445
 BoxCollider2D:
   m_ObjectHideFlags: 0
