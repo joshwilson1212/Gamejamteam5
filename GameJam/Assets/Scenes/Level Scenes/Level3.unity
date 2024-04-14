@@ -233,8 +233,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1079382556}
     - target: {fileID: 3738929696294387754, guid: 70192b71b88aa524fb96991f30dc0976, type: 3}
-      propertyPath: bullUnlocked
+      propertyPath: platOffsetY
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738929696294387754, guid: 70192b71b88aa524fb96991f30dc0976, type: 3}
+      propertyPath: bullUnlocked
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3738929696294387754, guid: 70192b71b88aa524fb96991f30dc0976, type: 3}
       propertyPath: plantUnlocked

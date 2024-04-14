@@ -98,8 +98,8 @@ public class PlatformMonster : Charater
         }
     }
 
-    public void Summon(Vector3 playerLoc, float offset)
+    public void Summon(Vector3 playerLoc, float offset, float offsetY)
     {
-        transform.position = playerLoc + new Vector3(offset, -0.2f);
+        transform.position = playerLoc + new Vector3(offset, offsetY);
     }
 }

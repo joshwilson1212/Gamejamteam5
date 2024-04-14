@@ -117,7 +117,7 @@ public class Player : MonoBehaviour
             isHighlighting = 0;
             highlight.SetActive(false);
             plat.gameObject.SetActive(true);
-            plat.Summon(transform.position,  facing * platOffsetX);
+            plat.Summon(transform.position,  facing * platOffsetX, platOffsetY);
             plantUsed++;
         }
     }
