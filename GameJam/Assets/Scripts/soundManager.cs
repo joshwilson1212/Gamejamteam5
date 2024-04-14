@@ -92,7 +92,7 @@ public class soundManager : MonoBehaviour{
         {
             //this line should be repeated and the file path should be in the new() with the filename included in the path. it Starts in the Resources so if your file is already there just put the name
             {SoundType.BIRDFLAP, new("birdflap") },
-            {SoundType.DESCEND, new("decend") },
+            {SoundType.DESCEND, new("descend") },
             {SoundType.DING, new("ding") },
             {SoundType.DOOR, new("door") },
             {SoundType.IMPACT, new("impact") },
@@ -112,11 +112,11 @@ public class soundManager : MonoBehaviour{
     public void Play(SoundType type, AudioSource audioSrc = null){
         if (sounds.ContainsKey(type)){
             if(audioSrc == null ){
-                if (!this.audioSrc.isPlaying)
-                {
+                //if (!this.audioSrc.isPlaying)
+                //{
                     this.audioSrc.clip = sounds[type].GetRandClip();
                     this.audioSrc.Play();
-                }
+                //}
             }
             else{
                     print("playsound");

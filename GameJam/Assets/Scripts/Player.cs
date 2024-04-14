@@ -3,6 +3,7 @@ using UnityEngine.LowLevel;
 
 public class Player : MonoBehaviour
 {
+    AudioSource step;
     
     public float appliedForce = 20;
     public float runForce = 3;
@@ -30,6 +31,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        step = GetComponent<AudioSource>();
         hasKey = false;
         rb = GetComponent<Rigidbody2D>();
         goRight = false;
@@ -55,15 +57,21 @@ public class Player : MonoBehaviour
             facing = -1;
             rb.AddForce(Vector3.left * runForce * Time.deltaTime, ForceMode2D.Force);
            
-            soundManager.Instance.Play(SoundType.STEP);
+            if (!step.isPlaying){
+                step.Play();
+            }
 
         }
         else if (goRight && !goLeft)
         {
             facing = 1;
             rb.AddForce(Vector3.right * runForce * Time.deltaTime, ForceMode2D.Force);
-            soundManager.Instance.Play(SoundType.STEP);
             
+            if (!step.isPlaying)
+            {
+                step.Play();
+            }
+
         }
         else if (isGrounded)
         {

@@ -6,17 +6,28 @@ using UnityEngine;
 public class pickupObject : MonoBehaviour
 {
     public Transform newtarget;
-
+    Rigidbody2D rb;
 
     AIDestinationSetter initialtarget;
-
+    AudioSource flap;
 
     public GameObject grabpoint;
     GameObject grabbable;
-
-
+    public AIPath aipath;
+    private void Update()
+    {
+        print(transform.position.magnitude - newtarget.position.magnitude);
+        if (!flap.isPlaying && (transform.position.magnitude - newtarget.position.magnitude) > 7.1)
+        {
+            
+            flap.Play();
+        }
+    }
     private void Start()
     {
+        aipath = GetComponent<AIPath>();
+        rb = GetComponent<Rigidbody2D>();
+        flap = GetComponent<AudioSource>();
         initialtarget = GetComponent<AIDestinationSetter>();
     }
     private void OnTriggerEnter2D(Collider2D collision){
@@ -32,6 +43,7 @@ public class pickupObject : MonoBehaviour
 
             
             initialtarget.target = newtarget;
+            
             
         }
 

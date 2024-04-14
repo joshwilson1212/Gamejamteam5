@@ -12,6 +12,7 @@ public class MagpiGraphics : MonoBehaviour
    
     void Update()
     {
+        
         if (aipath.desiredVelocity.x >= .01f)
         {
             transform.localScale = new Vector3(-1f,1f, 1f);
