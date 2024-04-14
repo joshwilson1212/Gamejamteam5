@@ -12,6 +12,10 @@ public class PlatformMonsterTigger : MonoBehaviour
         {
             monster.Rise();
         }
+        if (collision.CompareTag("Map"))
+        {
+            monster.Snap();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)

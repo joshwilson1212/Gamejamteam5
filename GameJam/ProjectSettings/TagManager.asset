@@ -10,6 +10,7 @@ TagManager:
   - Key
   - Tasty
   - Door
+  - Map
   layers:
   - Default
   - TransparentFX
