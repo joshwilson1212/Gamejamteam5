@@ -7,7 +7,7 @@ public class KeyCollection : MonoBehaviour
 {
     public Image keyImage;
     public GameObject key;
-    public Image circleImage;
+    public Image circleImage;  // drag collection circle here from gameplayUI -> key collected
     private Animator animator;
 
     private void Start() {
