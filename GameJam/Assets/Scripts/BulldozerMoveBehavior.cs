@@ -25,6 +25,7 @@ public class BulldozerMoveBehavior : MonoBehaviour
         goRight = false;
         goLeft = false;
         isGrounded = false;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
@@ -78,8 +79,8 @@ public class BulldozerMoveBehavior : MonoBehaviour
     private void DelPlayer()
     {
         
-        // GameObject.Find("Player").SetActive(false);
         player.SetActive(false);
+        //player.SetActive(false);
     }
 
     public void Summon(Vector3 playerLoc, float offset, int direction)
