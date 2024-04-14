@@ -71,7 +71,7 @@ public class Main : MonoBehaviour
         {
             player.SummonMagpie();
         }
-        if (input.Player.SummonBulldozer.WasPressedThisFrame())
+        if (input.Player.SummonBulldozer.WasReleasedThisFrame())
         {
             player.SummonBulldozer();
         }

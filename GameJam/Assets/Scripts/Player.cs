@@ -109,7 +109,6 @@ public class Player : MonoBehaviour
 
     public void SummonPlatform()
     {
-        // print(plat.isActiveAndEnabled);
         if (!plat.isActiveAndEnabled)
         {
             isHighlighting = 0;
@@ -121,13 +120,15 @@ public class Player : MonoBehaviour
 
     public void HighlightPlatform()
     {
-        isHighlighting = 1;
-        highlight.SetActive(true);
+        if (!plat.isActiveAndEnabled)
+        {
+            isHighlighting = 1;
+            highlight.SetActive(true);
+        }
     }
 
     public void SummonMagpie()
     {
-        // print(plat.isActiveAndEnabled);
         if (!magpie.isActiveAndEnabled)
         {
             isHighlighting = 0;
@@ -139,31 +140,24 @@ public class Player : MonoBehaviour
 
     public void HighlightMagpie()
     {
-        isHighlighting = 2;
-        highlight.SetActive(true);
-    }
-
-    public void SummonReaper()
-    {
-        // print(plat.isActiveAndEnabled);
-        if (!reaper.isActiveAndEnabled)
+        if (!magpie.isActiveAndEnabled)
         {
-            isHighlighting = 0;
-            highlight.SetActive(false);
-            reaper.gameObject.SetActive(true);
-            reaper.Summon(transform.position, facing * reaperOffsetX);
+            isHighlighting = 2;
+            highlight.SetActive(true);
         }
     }
 
     public void HighlightBulldozer()
     {
-        isHighlighting = 3;
-        highlight.SetActive(true);
+        if (!bulldozer.isActiveAndEnabled)
+        {
+            isHighlighting = 3;
+            highlight.SetActive(true);
+        }
     }
 
     public void SummonBulldozer()
     {
-        // print(plat.isActiveAndEnabled);
         if (!bulldozer.isActiveAndEnabled)
         {
             isHighlighting = 0;
@@ -173,10 +167,24 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void SummonReaper()
+    {
+        if (!reaper.isActiveAndEnabled)
+        {
+            isHighlighting = 0;
+            highlight.SetActive(false);
+            reaper.gameObject.SetActive(true);
+            reaper.Summon(transform.position, facing * reaperOffsetX);
+        }
+    }
+
     public void HighlightReaper()
     {
-        isHighlighting = 4;
-        highlight.SetActive(true);
+        if (!reaper.isActiveAndEnabled)
+        {
+            isHighlighting = 4;
+            highlight.SetActive(true);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
