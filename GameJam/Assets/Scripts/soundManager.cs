@@ -13,17 +13,17 @@ public enum SoundType
     //example format below
     //CLICK,
     //SOLVED,
-    BIRDFLAP = 0,
-    DESCEND = 1,
-    DING = 2,
-    DOOR = 3,
-    IMPACT = 3,
-    PIG = 4,
-    REAPER = 5,
-    SNAPPERGROW = 6,
-    SNAPPERSNAP = 7,
-    STEP = 8,
-    SUMMON = 9,
+    BIRDFLAP,
+    DESCEND,
+    DING,
+    DOOR,
+    IMPACT,
+    PIG,
+    REAPER,
+    SNAPPERGROW,
+    SNAPPERSNAP,
+    STEP,
+    SUMMON,
 }
 
 //we use this to get random varing sound volumes
@@ -111,19 +111,26 @@ public class soundManager : MonoBehaviour{
     //these are the the functions you call to actually play your sound, you can use play(int) or play(str) where you can specify your sounds enum value or call it by file name
     public void Play(SoundType type, AudioSource audioSrc = null){
         if (sounds.ContainsKey(type)){
-            if(audioSrc == null){
-                this.audioSrc.clip = sounds[type].GetRandClip();
-                this.audioSrc.Play();
+            if(audioSrc == null ){
+                if (!this.audioSrc.isPlaying)
+                {
+                    this.audioSrc.clip = sounds[type].GetRandClip();
+                    this.audioSrc.Play();
+                }
             }
             else{
-                audioSrc.clip = sounds[type].GetRandClip(); 
-                audioSrc.Play();
+                    print("playsound");
+                    audioSrc.clip = sounds[type].GetRandClip();
+                    audioSrc.Play();
+                
             }
         }   
     }
     public void Play(string type,AudioSource audioSrc){
-        SoundType soundType = Enum.Parse<SoundType>(type, true);
-        Play(soundType, audioSrc);
+       
+            SoundType soundType = Enum.Parse<SoundType>(type, true);
+            Play(soundType, audioSrc);
+        
     }
     public void Play(string type){
         Play(type, audioSrc);
