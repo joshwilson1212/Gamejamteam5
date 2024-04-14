@@ -243,7 +243,7 @@ MonoBehaviour:
   damping: 30
   plat: {fileID: 0}
   platOffsetX: 2
-  platOffsetY: -0.3
+  platOffsetY: -0.2
   reaper: {fileID: 0}
   reaperOffsetX: 1.5
   magpie: {fileID: 0}
