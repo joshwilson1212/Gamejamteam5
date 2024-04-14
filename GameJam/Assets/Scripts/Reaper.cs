@@ -31,7 +31,7 @@ public class Reaper : MonoBehaviour
     void Update()
     {
         // GameObject closestObject = null;
-        tempLength = monsters.Length;
+        // tempLength = monsters.Length;
         // monsters = GameObject.FindGameObjectsWithTag("Monster");
         print("Length: " + monsters.Length);
         if (!hasTarget && monsters.Length != 0)// if (tempLength != monsters.Length || gameObject == null || closestObjectPlace > monsters.Length - 1)
@@ -76,7 +76,7 @@ public class Reaper : MonoBehaviour
         if(collision.CompareTag("Monster"))
         {
             collision.gameObject.SetActive(false);
-            // monsters = GameObject.FindGameObjectsWithTag("Monster");
+            monsters = GameObject.FindGameObjectsWithTag("Monster");
             hasTarget = false;
         }
         if(collision.CompareTag("Player"))
