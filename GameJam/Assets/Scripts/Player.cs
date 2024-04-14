@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+
     AudioSource step;
     public float appliedForce = 20;
     public float runForce = 3;
@@ -47,6 +48,8 @@ public class Player : MonoBehaviour
     private int magpieUsed;
     private int reaperUsed;
 
+    Animator anim;
+
     // Start is called before the first frame update
     void Start(){
         step = GetComponent<AudioSource>();
@@ -61,6 +64,7 @@ public class Player : MonoBehaviour
         bullUsed = 0;
         magpieUsed = 0;
         reaperUsed = 0;
+        anim = GetComponent<Animator>();
 
     }
 
@@ -90,24 +94,30 @@ public class Player : MonoBehaviour
             isGrounded= false;
         }
         // print(rb.velocity.x);
+        //anim.Play("Player Animation");
         if (goLeft && !goRight && rb.velocity.x > -maxSpeed){
             facing = -1;
+            anim.Play("playerwalking");
             rb.AddForce(Vector3.left * runForce * Time.deltaTime, ForceMode2D.Force);
             transform.localScale = new Vector3(-1f, 1f, 1f);
             if (!step.isPlaying){
                 step.Play();
             }
         }
+
         else if (goRight && !goLeft && rb.velocity.x < maxSpeed){
             facing = 1;
+            anim.Play("playerwalking");
             rb.AddForce(Vector3.right * runForce * Time.deltaTime, ForceMode2D.Force);
             transform.localScale = new Vector3(1f, 1f, 1f);
             if (!step.isPlaying){
                 step.Play();
             }
         }
+       
         else if (isGrounded){
             rb.velocity = Vector2.MoveTowards(rb.velocity, Vector2.zero, damping * Time.deltaTime);
+            anim.SetTrigger("Idle");
         }
 
         if (isHighlighting == 1){
@@ -219,7 +229,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision){
         //print(collision.gameObject.name);
-        if (collision.gameObject.CompareTag("shiny")){
+        if (collision.gameObject.CompareTag("Key")){
             Destroy(collision.gameObject);
             hasKey = true;
             soundManager.Instance.Play(SoundType.DING);

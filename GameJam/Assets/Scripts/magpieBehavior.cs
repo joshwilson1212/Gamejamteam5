@@ -27,7 +27,7 @@ public class magpieBehavior : MonoBehaviour{
         initialtarget = GetComponent<AIDestinationSetter>();
     }
     private void OnTriggerEnter2D(Collider2D collision){
-        if (collision.CompareTag("shiny")){
+        if (collision.CompareTag("Key")){
             grabbable = collision.gameObject;
             grabbable.GetComponent<Rigidbody2D>().isKinematic = true;
             grabbable.transform.position = grabpoint.transform.position;
