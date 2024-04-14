@@ -71,7 +71,8 @@ public class BulldozerMoveBehavior : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+            //collision.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+            collision.gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.red;
             Invoke("DelPlayer",0.1f);
         }
     }
