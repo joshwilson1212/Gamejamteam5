@@ -38,7 +38,8 @@ public class Reaper : MonoBehaviour
         // tempLength = monsters.Length;
         // monsters = GameObject.FindGameObjectsWithTag("Monster");
         
-        print("Length: " + monsters.Length);
+        //print("Length: " + monsters.Length);
+
         if (!hasTarget && monsters.Length != 0)// if (tempLength != monsters.Length || gameObject == null || closestObjectPlace > monsters.Length - 1)
         {
             float shortestDist = Vector3.Distance(monsters[0].transform.position, transform.position);
@@ -56,23 +57,34 @@ public class Reaper : MonoBehaviour
             }
             hasTarget = true;
         }
+        
         if (monsters.Length > 0)
         {
-            if (transform.position.x - monsters[closestObjectPlace].transform.position.x >= .01f)
+            if (transform.position.x > monsters[closestObjectPlace].transform.position.x)
             {
                 transform.localScale = new Vector3(-1f, 1f, 1f);
             }
-            else if (transform.position.x - monsters[closestObjectPlace].transform.position.x <= -.01f)
+            else if (transform.position.x < monsters[closestObjectPlace].transform.position.x)
             {
                 transform.localScale = new Vector3(1f, 1f, 1f);
             }
-            print(closestObjectPlace);
+            //print(closestObjectPlace);
             state = ReaperState.Monster;
             transform.position = Vector3.MoveTowards(transform.position, monsters[closestObjectPlace].transform.position, speed * Time.deltaTime);
 
         }
         else if (monsters.Length == 0)
         {
+            //print("reaper:"+transform.position.x);
+            //print("Player" + player.transform.position.x);
+            if(transform.position.x > player.transform.position.x)
+            {
+                transform.localScale = new Vector3(-1f, 1f, 1f);
+            }
+            else
+            {
+                transform.localScale = new Vector3(1f, 1f, 1f);
+            }
             state = ReaperState.Player;
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
         }
