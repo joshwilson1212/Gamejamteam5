@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     
     public float appliedForce = 20;
     public float runForce = 3;
+    public float maxSpeed = 4;
     public float damping;
     private Rigidbody2D rb;
     private bool goRight;
@@ -52,7 +53,8 @@ public class Player : MonoBehaviour
         {
             isGrounded= false;
         }
-        if (goLeft && !goRight)
+        // print(rb.velocity.x);
+        if (goLeft && !goRight && rb.velocity.x > -maxSpeed)
         {
             facing = -1;
             rb.AddForce(Vector3.left * runForce * Time.deltaTime, ForceMode2D.Force);
@@ -62,7 +64,7 @@ public class Player : MonoBehaviour
             }
 
         }
-        else if (goRight && !goLeft)
+        else if (goRight && !goLeft && rb.velocity.x < maxSpeed)
         {
             facing = 1;
             rb.AddForce(Vector3.right * runForce * Time.deltaTime, ForceMode2D.Force);
@@ -117,7 +119,6 @@ public class Player : MonoBehaviour
 
     public void SummonPlatform()
     {
-        // print(plat.isActiveAndEnabled);
         if (!plat.isActiveAndEnabled)
         {
             isHighlighting = 0;
@@ -129,13 +130,15 @@ public class Player : MonoBehaviour
 
     public void HighlightPlatform()
     {
-        isHighlighting = 1;
-        highlight.SetActive(true);
+        if (!plat.isActiveAndEnabled)
+        {
+            isHighlighting = 1;
+            highlight.SetActive(true);
+        }
     }
 
     public void SummonMagpie()
     {
-        // print(plat.isActiveAndEnabled);
         if (!magpie.isActiveAndEnabled)
         {
             isHighlighting = 0;
@@ -147,13 +150,35 @@ public class Player : MonoBehaviour
 
     public void HighlightMagpie()
     {
-        isHighlighting = 2;
-        highlight.SetActive(true);
+        if (!magpie.isActiveAndEnabled)
+        {
+            isHighlighting = 2;
+            highlight.SetActive(true);
+        }
+    }
+
+    public void HighlightBulldozer()
+    {
+        if (!bulldozer.isActiveAndEnabled)
+        {
+            isHighlighting = 3;
+            highlight.SetActive(true);
+        }
+    }
+
+    public void SummonBulldozer()
+    {
+        if (!bulldozer.isActiveAndEnabled)
+        {
+            isHighlighting = 0;
+            highlight.SetActive(false);
+            bulldozer.gameObject.SetActive(true);
+            bulldozer.Summon(transform.position, facing * reaperOffsetX, facing);
+        }
     }
 
     public void SummonReaper()
     {
-        // print(plat.isActiveAndEnabled);
         if (!reaper.isActiveAndEnabled)
         {
             isHighlighting = 0;
@@ -163,28 +188,13 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void HighlightBulldozer()
-    {
-        isHighlighting = 3;
-        highlight.SetActive(true);
-    }
-
-    public void SummonBulldozer()
-    {
-        // print(plat.isActiveAndEnabled);
-        if (!reaper.isActiveAndEnabled)
-        {
-            isHighlighting = 0;
-            highlight.SetActive(false);
-            bulldozer.gameObject.SetActive(true);
-            bulldozer.Summon(transform.position, facing * reaperOffsetX, facing);
-        }
-    }
-
     public void HighlightReaper()
     {
-        isHighlighting = 4;
-        highlight.SetActive(true);
+        if (!reaper.isActiveAndEnabled)
+        {
+            isHighlighting = 4;
+            highlight.SetActive(true);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
