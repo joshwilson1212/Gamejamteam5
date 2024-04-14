@@ -34,6 +34,11 @@ public class Player : MonoBehaviour
     public bool magpieUnlocked;
     public bool reaperUnlocked;
 
+    private int plantUsed;
+    private int bullUsed;
+    private int magpieUsed;
+    private int reaperUsed;
+
     // Start is called before the first frame update
     void Start(){
         step = GetComponent<AudioSource>();
@@ -44,6 +49,10 @@ public class Player : MonoBehaviour
         isGrounded = false;
         facing = 1;
         isHighlighting = 0;
+        plantUsed = 0;
+        bullUsed = 0;
+        magpieUsed = 0;
+        reaperUsed = 0;
     }
 
     // Update is called once per frame
@@ -104,16 +113,17 @@ public class Player : MonoBehaviour
     }
 
     public void SummonPlatform(){
-        if (!plat.isActiveAndEnabled && plantUnlocked){
+        if (!plat.isActiveAndEnabled && plantUnlocked && plantUsed < 2){
             isHighlighting = 0;
             highlight.SetActive(false);
             plat.gameObject.SetActive(true);
             plat.Summon(transform.position,  facing * platOffsetX);
+            plantUsed++;
         }
     }
 
     public void HighlightPlatform(){
-        if (!plat.isActiveAndEnabled && plantUnlocked)
+        if (!plat.isActiveAndEnabled && plantUnlocked && plantUsed < 2)
         {
             isHighlighting = 1;
             highlight.SetActive(true);
@@ -121,38 +131,43 @@ public class Player : MonoBehaviour
     }
 
     public void SummonMagpie(){
-        if (!magpie.isActiveAndEnabled && magpieUnlocked)
+        if (!magpie.isActiveAndEnabled && magpieUnlocked && magpieUsed < 2)
         {
             isHighlighting = 0;
             highlight.SetActive(false);
             magpie.gameObject.SetActive(true);
             magpie.Summon(transform.position, facing * magpieOffsetX);
+            magpieUsed++;
         }
     }
 
     public void HighlightMagpie(){
-        if (!magpie.isActiveAndEnabled && magpieUnlocked)
+        if (!magpie.isActiveAndEnabled && magpieUnlocked && magpieUsed < 2)
         {
             isHighlighting = 2;
             highlight.SetActive(true);
         }
     }
 
-    public void HighlightBulldozer(){
-        if (!bulldozer.isActiveAndEnabled && bullUnlocked)
-        {
-            isHighlighting = 3;
-            highlight.SetActive(true);
-        }
-    }
+    
 
     public void SummonBulldozer(){
-        if (!bulldozer.isActiveAndEnabled && bullUnlocked)
+        if (!bulldozer.isActiveAndEnabled && bullUnlocked && bullUsed < 2)
         {
             isHighlighting = 0;
             highlight.SetActive(false);
             bulldozer.gameObject.SetActive(true);
             bulldozer.Summon(transform.position, facing * reaperOffsetX, facing);
+            bullUsed++;
+        }
+    }
+
+    public void HighlightBulldozer()
+    {
+        if (!bulldozer.isActiveAndEnabled && bullUnlocked && bullUsed < 2)
+        {
+            isHighlighting = 3;
+            highlight.SetActive(true);
         }
     }
 
@@ -162,6 +177,7 @@ public class Player : MonoBehaviour
             highlight.SetActive(false);
             reaper.gameObject.SetActive(true);
             reaper.Summon(transform.position, facing * reaperOffsetX);
+            reaperUsed++;  
         }
     }
 

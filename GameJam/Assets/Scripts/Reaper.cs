@@ -16,6 +16,7 @@ public class Reaper : MonoBehaviour
     private ReaperState state;
     private int closestObjectPlace;
     private int tempLength;
+    private bool hasTarget;
 
     // Start is called before the first frame update
     void Awake()
@@ -23,6 +24,7 @@ public class Reaper : MonoBehaviour
         state = ReaperState.Monster;
         monsters = GameObject.FindGameObjectsWithTag("Monster");
         tempLength = monsters.Length;
+        hasTarget = false;
     }
 
     // Update is called once per frame
@@ -30,9 +32,9 @@ public class Reaper : MonoBehaviour
     {
         // GameObject closestObject = null;
         tempLength = monsters.Length;
-        monsters = GameObject.FindGameObjectsWithTag("Monster");
+        // monsters = GameObject.FindGameObjectsWithTag("Monster");
         print("Length: " + monsters.Length);
-        if (tempLength != monsters.Length || gameObject == null || closestObjectPlace > monsters.Length-1)
+        if (!hasTarget && monsters.Length != 0)// if (tempLength != monsters.Length || gameObject == null || closestObjectPlace > monsters.Length - 1)
         {
             float shortestDist = Vector3.Distance(monsters[0].transform.position, transform.position);
             closestObjectPlace = 0;
@@ -47,14 +49,16 @@ public class Reaper : MonoBehaviour
                     closestObjectPlace = i;
                 }
             }
+            hasTarget = true;
         }
+        //}
         if (monsters.Length > 0)
         {
             print(closestObjectPlace);
             state = ReaperState.Monster;
             transform.position = Vector3.MoveTowards(transform.position, monsters[closestObjectPlace].transform.position, speed * Time.deltaTime);
         }
-        else if (monsters.Length == 5)
+        else if (monsters.Length == 0)
         {
             state = ReaperState.Player;
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
@@ -72,7 +76,8 @@ public class Reaper : MonoBehaviour
         if(collision.CompareTag("Monster"))
         {
             collision.gameObject.SetActive(false);
-            monsters = GameObject.FindGameObjectsWithTag("Monster");
+            // monsters = GameObject.FindGameObjectsWithTag("Monster");
+            hasTarget = false;
         }
         if(collision.CompareTag("Player"))
         {
