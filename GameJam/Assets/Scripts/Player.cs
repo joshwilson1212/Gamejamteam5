@@ -145,6 +145,7 @@ public class Player : MonoBehaviour
             plat.gameObject.SetActive(true);
             plat.Summon(transform.position,  facing * platOffsetX, platOffsetY);
             plantUsed++;
+            plant.color = new Color(1f, 1f, 1f, 0.3f);
         }
     }
 
@@ -164,6 +165,7 @@ public class Player : MonoBehaviour
             magpie.gameObject.SetActive(true);
             magpie.Summon(transform.position, facing * magpieOffsetX);
             magpieUsed++;
+            maggy.color = new Color(1f, 1f, 1f, 0.3f);
         }
     }
 
@@ -183,6 +185,7 @@ public class Player : MonoBehaviour
             bulldozer.gameObject.SetActive(true);
             bulldozer.Summon(transform.position, facing * reaperOffsetX, facing);
             bullUsed++;
+            bull.color = new Color(1f, 1f, 1f, 0.3f);
         }
     }
 
@@ -201,7 +204,8 @@ public class Player : MonoBehaviour
             highlight.SetActive(false);
             reaper.gameObject.SetActive(true);
             reaper.Summon(transform.position, facing * reaperOffsetX);
-            reaperUsed++;  
+            reaperUsed++;
+            reapy.color = new Color(1f, 1f, 1f, 0.3f);
         }
     }
 
